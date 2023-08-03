@@ -8,11 +8,11 @@ import plane from './basic/shapes/plane.js';
 import loopMachine from './basic/loopMachine.js';
 import keyListener from './basic/keyListener.js';
 import keycode from './basic/keycode.js';
-
-scene.add(cube);
+import model3D from './basic/shapes/model3D.js';
+//scene.add(cube);
 scene.add(light);
-scene.add( plane );
-
+scene.add(model3D);
+//scene.add( plane );
 camera.position.set (1, 1, 1);
 camera.lookAt(cube.position);
 
