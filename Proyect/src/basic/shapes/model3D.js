@@ -1,4 +1,4 @@
-import {OrbitControls} from '../../../js/three.js';
+/*import {OrbitControls} from '../../../js/three.js';
 import { MTLLoader } from '../../../js/three.js';
 import { OBJLoader } from '../../../js/three.js';
 
@@ -15,4 +15,4 @@ t.load('../../../assets/obj/planet.obj', (jc)=>{
         escena.add(jeanc)
     })})
 
-export default model3D;
+export default model3D;*/
