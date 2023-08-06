@@ -7,13 +7,17 @@ import resize from './utils/resize.js';
 import loopMachine from './utils/loopMachine.js';
 import keyListener from './utils/keyListener.js';
 import keycode from './utils/keycode.js';
-import model3D from './scenes/model3D.js';
+import { loadPlanet } from './scenes/model3D.js';
+import plane from './scenes/plane.js';
 
-scene.add(cube);
-//scene.add(model3D);
-
-scene.add(light);
+//scene.add(cube);
+loadPlanet((planetModel) => {
+    scene.add(planetModel);
+    camera.lookAt(planetModel.position);
+});
 //scene.add( plane );
+    
+scene.add(light);
 camera.position.set (1, 1, 1);
 camera.lookAt(cube.position);
 
