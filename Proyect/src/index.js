@@ -1,14 +1,14 @@
-import scene from './basic/sceen.js';
-import camera from './basic/camera.js';
-import renderer from './basic/renderer.js';
-import cube from './basic/shapes/cube.js';
-import light from './basic/light.js';
-import resize from './basic/resize.js';
-import plane from './basic/shapes/plane.js';
-import loopMachine from './basic/loopMachine.js';
-import keyListener from './basic/keyListener.js';
-import keycode from './basic/keycode.js';
+import scene from './utils/sceen.js';
+import camera from './utils/camera.js';
+import renderer from './utils/renderer.js';
+import cube from './scenes/cube.js';
+import light from './utils/light.js';
+import resize from './utils/resize.js';
+import loopMachine from './utils/loopMachine.js';
+import keyListener from './utils/keyListener.js';
+import keycode from './utils/keycode.js';
 //import model3D from './basic/shapes/model3D.js';
+
 scene.add(cube);
 scene.add(light);
 //scene.add(model3D);
