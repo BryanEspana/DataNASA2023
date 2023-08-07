@@ -9,16 +9,21 @@ import keyListener from './utils/keyListener.js';
 import keycode from './utils/keycode.js';
 import { loadPlanet } from './scenes/model3D.js';
 import plane from './scenes/plane.js';
+import { loadPlanetOptimizate } from './scenes/modelGLB.js';
 
 //scene.add(cube);
-loadPlanet((planetModel) => {
+/*loadPlanet((planetModel) => {
+    scene.add(planetModel);
+    camera.lookAt(planetModel.position);
+});*/
+loadPlanetOptimizate((planetModel) => {
     scene.add(planetModel);
     camera.lookAt(planetModel.position);
 });
 //scene.add( plane );
     
 scene.add(light);
-camera.position.set (70, 55, 65);
+camera.position.set (10, -30, 50);
 camera.lookAt(cube.position);
 
 //toma una foto de la escena y la muestra en el canvas
