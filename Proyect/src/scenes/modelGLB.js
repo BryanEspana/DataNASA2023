@@ -5,11 +5,10 @@ const loader = new GLTFLoader();
 let planet;
 
 export function loadPlanetOptimizate(callback) {
-    loader.load('src/assets/glt_glb/planet.glb', (gltf) => {
+    loader.load('src/assets/glt_glb/Venus.glb', (gltf) => {
         planet = gltf.scene;
         callback(planet);
     });
-
 }
 
 /*
