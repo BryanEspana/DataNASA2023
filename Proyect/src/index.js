@@ -18,7 +18,7 @@ loadPlanet((planetModel) => {
 //scene.add( plane );
     
 scene.add(light);
-camera.position.set (1, 1, 1);
+camera.position.set (70, 55, 65);
 camera.lookAt(cube.position);
 
 //toma una foto de la escena y la muestra en el canvas
