@@ -9,20 +9,28 @@ import keyListener from './utils/keyListener.js';
 import keycode from './utils/keycode.js';
 import plane from './scenes/plane.js';
 import { loadPlanetOptimizate } from './scenes/modelGLB.js';
-
-//scene.add(cube);
-/*loadPlanet((planetModel) => {
-    scene.add(planetModel);
-    camera.lookAt(planetModel.position);
-});*/
+import { UnrealBloomPass } from "/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import * as THREE from "/node_modules/three/build/three.module.js";
+import { EffectComposer } from "/node_modules/three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/RenderPass.js";
 
 let planetModelGlobal;
 loadPlanetOptimizate((planetModel) => {
-    planetModel.scale.set(0.1, 0.1, 0.1); 
+    planetModel.scale.set(0.1, 0.1, 0.1);
+    
+    // Assuming the planetModel has a mesh with a material that you want to modify
+    planetModel.traverse((child) => {
+        if (child.isMesh) {
+            child.material.emissive = new THREE.Color(0xFFFFFF);
+            child.material.emissiveIntensity = 0.2; // Adjust the intensity as needed
+        }
+    });
+
     scene.add(planetModel);
     camera.lookAt(planetModel.position);
     planetModelGlobal = planetModel;
 });
+
 let isDragging = false;
 let lastX;
 
@@ -67,10 +75,24 @@ renderer.domElement.addEventListener('mouseup', () => {
     isDragging = false;
 });
 
+
+
+const renderPass = new RenderPass(scene, camera);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+bloomPass.threshold = 0;
+bloomPass.strength = 3; //intensity of glow
+bloomPass.radius = 1;
+const composer = new EffectComposer(renderer);
+composer.setSize(window.innerWidth, window.innerHeight);
+composer.renderToScreen = true;
+composer.addPass(renderPass);
+composer.addPass(bloomPass);
+
+
+
 scene.add(light);
 camera.position.set (0, 0, 200);
 camera.lookAt(cube.position);
-
 
 
 const starCount = 100000; 
@@ -98,9 +120,8 @@ starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 const starField = new THREE.Points(starGeometry, starMaterial);
 scene.add(starField);
 
-
-const starCountNear = 50000;
-const starCountFar = 50000;
+const starCountNear = 1000;
+const starCountFar = 5000;
 
 // Geometría y material para el campo de estrellas cercano
 const starGeometryNear = new THREE.BufferGeometry();
@@ -122,6 +143,8 @@ starGeometryFar.setAttribute('position', new THREE.BufferAttribute(positionsFar,
 const starFieldFar = new THREE.Points(starGeometryFar, starMaterial);
 scene.add(starFieldFar);
 
+
+
 //renderer.render(scene, camera);
 loopMachine.addCallback(() => {
 
@@ -137,9 +160,12 @@ loopMachine.addCallback(() => {
     if (planetModelGlobal) { // solo rota si el modelo ya fue cargado y asignado
         planetModelGlobal.rotation.y += 0.002; // 3. Añade la rotación al modelo en el callback
     }
-    renderer.render(scene, camera);
+
+    composer.render();
 }, 1000/60)
+
 
 resize.start(renderer);
 loopMachine.start();
 keyListener.start();
+
