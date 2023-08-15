@@ -21,7 +21,7 @@ loadPlanetOptimizate((planetModel) => {
     // Assuming the planetModel has a mesh with a material that you want to modify
     planetModel.traverse((child) => {
         if (child.isMesh) {
-            child.material.emissive = new THREE.Color(0xFFFFFF);
+            child.material.emissive = new THREE.Color("#D7AD8A");
             child.material.emissiveIntensity = 0.2; // Adjust the intensity as needed
         }
     });
