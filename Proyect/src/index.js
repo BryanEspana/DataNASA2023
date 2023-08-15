@@ -78,10 +78,13 @@ renderer.domElement.addEventListener('mouseup', () => {
 
 
 const renderPass = new RenderPass(scene, camera);
+
+// Modificamos el UnrealBloomPass
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
 bloomPass.threshold = 0;
-bloomPass.strength = 3; //intensity of glow
+bloomPass.strength = 5;  // Aumentamos la intensidad del resplandor
 bloomPass.radius = 1;
+
 const composer = new EffectComposer(renderer);
 composer.setSize(window.innerWidth, window.innerHeight);
 composer.renderToScreen = true;
