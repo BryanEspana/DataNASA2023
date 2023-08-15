@@ -6,23 +6,32 @@ import light from './utils/light.js';
 import resize from './utils/resize.js';
 import loopMachine from './utils/loopMachine.js';
 import keyListener from './utils/keyListener.js';
-import keycode from './utils/keycode.js';
-import plane from './scenes/plane.js';
 import { loadPlanetOptimizate } from './scenes/modelGLB.js';
 import { UnrealBloomPass } from "/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import * as THREE from "/node_modules/three/build/three.module.js";
 import { EffectComposer } from "/node_modules/three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/RenderPass.js";
 
+
 let planetModelGlobal;
 loadPlanetOptimizate((planetModel) => {
-    planetModel.scale.set(0.1, 0.1, 0.1);
+    planetModel.scale.set(0.12, 0.115, 0.12);
     
     // Assuming the planetModel has a mesh with a material that you want to modify
+    const loader = new THREE.TextureLoader();
+    const emissiveMap = loader.load('Proyect/src/assets/img/ruido1.jpg');
+    const bumpMap = loader.load('Proyect/src/assets/img/ruido2.jpg');
+
     planetModel.traverse((child) => {
         if (child.isMesh) {
-            child.material.emissive = new THREE.Color("#D7AD8A");
-            child.material.emissiveIntensity = 0.2; // Adjust the intensity as needed
+            child.material.emissiveMap = emissiveMap; // Textura de puntos naranjas brillantes
+            child.material.emissive = new THREE.Color("#FFFFFF"); // Color blanco para aumentar la luminosidad
+            child.material.emissiveIntensity = 1.0;
+            
+            child.material.bumpMap = bumpMap; // Textura de relieve para resaltar los puntos brillantes
+            child.material.bumpScale = 0.1; // Ajusta la intensidad del relieve según sea necesario
+            
+            child.material.needsUpdate = true;
         }
     });
 
@@ -81,8 +90,8 @@ const renderPass = new RenderPass(scene, camera);
 
 // Modificamos el UnrealBloomPass
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
-bloomPass.threshold = 0;
-bloomPass.strength = 5;  // Aumentamos la intensidad del resplandor
+bloomPass.threshold = 0.1;
+bloomPass.strength = 10;  // Aumentamos la intensidad del resplandor
 bloomPass.radius = 1;
 
 const composer = new EffectComposer(renderer);

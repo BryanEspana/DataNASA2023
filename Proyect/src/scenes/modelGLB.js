@@ -5,7 +5,7 @@ const loader = new GLTFLoader();
 let planet;
 
 export function loadPlanetOptimizate(callback) {
-    loader.load('src/assets/glt_glb/Venus.glb', (gltf) => {
+    loader.load('src/assets/glt_glb/callisto.glb', (gltf) => {
         planet = gltf.scene;
         callback(planet);
     });
