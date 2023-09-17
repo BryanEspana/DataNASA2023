@@ -119,7 +119,7 @@ const starTexture = textureLoader.load('src/assets/img/star.png'); // Reemplaza 
 // Modifica el material para usar la textura
 const starMaterial = new THREE.PointsMaterial({ 
     color: 0xFFFFFF, 
-    size: 1.5,
+    size: 1,
     map: starTexture,
     transparent: true, 
     blending: THREE.NormalBlending

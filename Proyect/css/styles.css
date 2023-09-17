@@ -2,14 +2,75 @@ body{
     margin: 0rem;
     font-family: 'Lato', sans-serif;
     color: rgba(0, 0, 0, 0.747);
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: -1000;
 }
-.absolutediv{
+
+.absoluteLogo{
+    position: absolute;
+    left: 1%;
+    top: -4%;
+    color: white;
+    font-size: 40px;
+
+
+}
+
+.topRight{
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    color: white;
+    font-size: 20px;
+}
+.topRight h4{
+    margin: 0rem;
+    padding: 0rem;
+    font-weight: 300;
+    font-size: 20px;
+}
+.absolutedivCenter{
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.absolutedivRight{
+    position: absolute !important;
+    background-color: rgba(240, 248, 255, 0) !important;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    text-align: right;
+    color: white;
+    
+
+}
+.absolutedivRight h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    margin: 0rem;
+    padding: 0rem;
+
+}
+.absolutedivRight h4{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0rem;
+    padding:  0.5rem 0rem;
+    color: rgba(255, 255, 255, 0.726);
+
+}
+.infoPlanet{
+    padding: 2rem 0rem;
 }
 h1{
     font-size: 90px;
@@ -31,12 +92,85 @@ button{
     background-color: rgba(0, 0, 0, 0.747);
     font-family: 'Lato', sans-serif;
     color: rgba(255, 255, 255, 0.842);
+    font-weight: 800 !important;
     position: absolute;
     top: 140%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1000;
 }
 button:hover{
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
 }
+
+.absolutedivCircle{
+    position: absolute !important;
+    background-color: rgba(240, 248, 255, 0) !important;
+    position: absolute;
+    top: 5%;
+    left: 26.8%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: -1;
+}
+
+.circle {
+    position: absolute !important;
+    width: 850px;
+    height: 830px;
+    border: 1px dashed #ffffffc9;
+    border-radius: 50%;
+    animation: spin 30s linear infinite; /* Animación llamada "spin" */
+    z-index: 1;
+
+}
+.point {
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 0;
+}
+
+.absolutedivCircle2{
+    position: absolute !important;
+    background-color: rgba(240, 248, 255, 0) !important;
+    position: absolute;
+    top: 1%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.circle2 {
+    position: absolute !important;
+    width: 300px;
+    height: 900px;
+    border: 1px dashed #ffffffc9;
+    border-radius: 50%;
+    animation: spin 30s linear infinite; /* Animación llamada "spin" */
+}
+.point2 {
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    left: 0;
+}
+
+
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg); /* Gira 360 grados completos */
+    }
+}
+
