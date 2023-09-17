@@ -16,7 +16,7 @@ import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/Rend
 let planetModelGlobal;
 loadPlanetOptimizate((planetModel) => {
     //planetModel.scale.set(0.12, 0.115, 0.12);
-    planetModel.scale.set(0.20, 0.18, 0.20);
+    planetModel.scale.set(0.19, 0.19, 0.19);
 
     // Assuming the planetModel has a mesh with a material that you want to modify
     const loader = new THREE.TextureLoader();

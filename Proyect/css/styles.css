@@ -6,7 +6,8 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
-    z-index: -1000;
+    z-index: -1000 !important;
+    overflow: hidden;
 }
 
 .absoluteLogo{
@@ -15,8 +16,6 @@ body{
     top: -4%;
     color: white;
     font-size: 40px;
-
-
 }
 
 .topRight{
@@ -73,15 +72,18 @@ body{
     padding: 2rem 0rem;
 }
 h1{
-    font-size: 90px;
+    font-size: 85px;
     margin: 0rem;
     padding: 0rem;
+    letter-spacing: 15px;
 }
 h2{
     position: absolute;
     top: -20%;
     left: 50%;
     transform: translate(-50%, -50%);
+    letter-spacing: 15px;
+
 }
 
 button{
@@ -98,6 +100,8 @@ button{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    letter-spacing: 5px;
+
 }
 button:hover{
     background-color: rgb(0, 0, 0);
@@ -109,7 +113,7 @@ button:hover{
     background-color: rgba(240, 248, 255, 0) !important;
     position: absolute;
     top: 5%;
-    left: 26.8%;
+    left: 27.5%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: -1;
@@ -117,8 +121,8 @@ button:hover{
 
 .circle {
     position: absolute !important;
-    width: 850px;
-    height: 830px;
+    width: 45%;
+    height: 90%;
     border: 1px dashed #ffffffc9;
     border-radius: 50%;
     animation: spin 30s linear infinite; /* Animación llamada "spin" */
@@ -139,28 +143,36 @@ button:hover{
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     position: absolute;
-    top: 1%;
-    left: 40%;
+    top: 0.5%;
+    left: 25%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
 .circle2 {
     position: absolute !important;
-    width: 300px;
-    height: 900px;
+    width: 50%;
+    height: 100%;
     border: 1px dashed #ffffffc9;
     border-radius: 50%;
-    animation: spin 30s linear infinite; /* Animación llamada "spin" */
+    animation: spin2 30s linear infinite; /* Animación llamada "spin" */
 }
 .point2 {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     position: absolute;
-    top: 40%;
+    top: 42%;
     left: 0;
+}
+@keyframes spin2 {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg); /* Gira 360 grados completos */
+    }
 }
 
 
