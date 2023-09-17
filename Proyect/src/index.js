@@ -15,8 +15,9 @@ import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/Rend
 
 let planetModelGlobal;
 loadPlanetOptimizate((planetModel) => {
-    planetModel.scale.set(0.12, 0.115, 0.12);
-    
+    //planetModel.scale.set(0.12, 0.115, 0.12);
+    planetModel.scale.set(0.20, 0.18, 0.20);
+
     // Assuming the planetModel has a mesh with a material that you want to modify
     const loader = new THREE.TextureLoader();
     const emissiveMap = loader.load('Proyect/src/assets/img/ruido1.jpg');
@@ -106,6 +107,7 @@ scene.add(light);
 camera.position.set (0, 0, 200);
 camera.lookAt(cube.position);
 
+//BEGING-------------------------------Estrellas de fondo-------------------------------------------
 
 const starCount = 100000; 
 const starGeometry = new THREE.BufferGeometry();
@@ -117,7 +119,7 @@ const starTexture = textureLoader.load('src/assets/img/star.png'); // Reemplaza 
 // Modifica el material para usar la textura
 const starMaterial = new THREE.PointsMaterial({ 
     color: 0xFFFFFF, 
-    size: 2.5,
+    size: 1.5,
     map: starTexture,
     transparent: true, 
     blending: THREE.NormalBlending
@@ -154,6 +156,7 @@ for (let i = 0; i < starCountFar * 3; i++) {
 starGeometryFar.setAttribute('position', new THREE.BufferAttribute(positionsFar, 3));
 const starFieldFar = new THREE.Points(starGeometryFar, starMaterial);
 scene.add(starFieldFar);
+//ENDING-------------------------------Estrellas de fondo-------------------------------------------
 
 
 
