@@ -17,13 +17,29 @@ body{
     color: white;
     font-size: 40px;
 }
-
+svg{
+    position: absolute;
+    left: 0.8rem;
+    top: 1rem;
+}
 .topRight{
     position: absolute;
     right: 1%;
     top: 1%;
     color: white;
     font-size: 20px;
+}
+.topRight input{
+    font-family: 'Lato', sans-serif;
+    font-weight: 800;
+    border: 0rem;
+    padding: 1rem;
+    padding-left: 2.5rem;
+    color: white;
+    background-color: #ffffff00;
+    margin-bottom: 0.4rem;
+    font-size: 18px;
+    border: 2px solid white ;
 }
 .topRight h4{
     margin: 0rem;
@@ -74,8 +90,9 @@ body{
 h1{
     font-size: 85px;
     margin: 0rem;
-    padding: 0rem;
+    padding: 1rem 0rem;
     letter-spacing: 15px;
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 h2{
     position: absolute;
@@ -83,10 +100,35 @@ h2{
     left: 50%;
     transform: translate(-50%, -50%);
     letter-spacing: 15px;
+}
+h4{
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.15rem solid rgba(255, 255, 255, 0.651);
+}
+.encabezado{
+    margin: 0rem;
+    padding: 1.5rem 0rem;
+}
+h5{
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    letter-spacing: 10px;
+    cursor: pointer;
+    margin: 0rem;
+    padding: 0rem;
+}
+h5:hover{
+    font-weight: 800;
 
 }
 
+
 button{
+    margin-top: 5rem;
     cursor: pointer;
     padding: 1rem;
     border: 0rem;
@@ -184,5 +226,18 @@ button:hover{
     100% {
         transform: rotate(360deg); /* Gira 360 grados completos */
     }
+}
+
+
+img{
+    color: white;
+    fill: white !important;
+
+}
+.text{
+    position: absolute;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 0rem 5rem;
 }
 
