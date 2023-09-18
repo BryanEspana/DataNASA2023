@@ -270,6 +270,7 @@ img{
     height: 40px;
     border-radius: 50%;
     display: flex;
+    opacity: 80%;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -277,7 +278,7 @@ img{
   }
   .carousel-item.active {
     transform: scale(1.2);
-    background-color: grey;
+    background-color: rgba(255, 255, 255, 0.29);
   }
   .carousel-item img {
     width: 100%;
