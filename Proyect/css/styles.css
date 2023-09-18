@@ -110,7 +110,7 @@ h4{
 }
 .encabezado{
     margin: 0rem;
-    padding: 1.5rem 0rem;
+    padding: 1rem 0rem;
 }
 h5{
     font-size: 14px;
@@ -241,3 +241,59 @@ img{
     padding: 0rem 5rem;
 }
 
+
+.estrellaCSS{
+
+    margin: 0rem;
+    padding: 0rem;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 100%;
+}
+.carousel-container {
+    z-index: 100000000000;
+    position: absolute;
+    bottom: 1rem;
+    left: auto;
+    right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .carousel-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .carousel-item.active {
+    transform: scale(1.2);
+    background-color: grey;
+  }
+  .carousel-item img {
+    width: 100%;
+    border-radius: 50%;
+  }
+  .carousel-arrow {
+    position: absolute;
+    top: -15%;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    padding: 10px;
+  }
+  .carousel-arrow.left {
+    left: -40px;
+  }
+  .carousel-arrow.right {
+    right: -40px;
+  }
