@@ -15,7 +15,7 @@ body{
     left: 1%;
     top: -4%;
     color: white;
-    font-size: 40px;
+    font-size: 30px;
 }
 svg{
     position: absolute;
@@ -48,6 +48,7 @@ svg{
     font-size: 20px;
 }
 .absolutedivCenter{
+    z-index: 10000000000000 !important;
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     position: absolute;
@@ -88,7 +89,7 @@ svg{
     padding: 2rem 0rem;
 }
 h1{
-    font-size: 85px;
+    font-size:69px;
     margin: 0rem;
     padding: 1rem 0rem;
     letter-spacing: 15px;
@@ -297,4 +298,8 @@ img{
   }
   .carousel-arrow.right {
     right: -40px;
+  }
+  a{
+    text-decoration: none;
+    color: inherit;
   }
