@@ -6,40 +6,64 @@ import light from './utils/light.js';
 import resize from './utils/resize.js';
 import loopMachine from './utils/loopMachine.js';
 import keyListener from './utils/keyListener.js';
-import { loadPlanetOptimizate } from './scenes/modelGLB.js';
 import { UnrealBloomPass } from "/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import * as THREE from "/node_modules/three/build/three.module.js";
 import { EffectComposer } from "/node_modules/three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/RenderPass.js";
+import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
+const loader = new GLTFLoader();
+let planet;
 
 let planetModelGlobal;
-loadPlanetOptimizate((planetModel) => {
-    //planetModel.scale.set(0.12, 0.115, 0.12);
-    planetModel.scale.set(0.19, 0.19, 0.19);
+let object = ["callisto.glb","earth.glb"]
+let currentIndex = 0
 
-    // Assuming the planetModel has a mesh with a material that you want to modify
-    const loader = new THREE.TextureLoader();
-    const emissiveMap = loader.load('Proyect/src/assets/img/ruido1.jpg');
-    const bumpMap = loader.load('Proyect/src/assets/img/ruido2.jpg');
+async function loadPlanetModel(position) {
+    const loadPlanetOptimized = () => {
+        return new Promise((resolve, reject) => {
+            loader.load('src/assets/glt_glb/'+object[currentIndex], (gltf) => {
+                const planet = gltf.scene;
+                resolve(planet);
+            }, undefined, reject);
+        });
+    };
 
-    planetModel.traverse((child) => {
-        if (child.isMesh) {
-            child.material.emissiveMap = emissiveMap; // Textura de puntos naranjas brillantes
-            child.material.emissive = new THREE.Color("#FFFFFF"); // Color blanco para aumentar la luminosidad
-            child.material.emissiveIntensity = 1.0;
-            
-            child.material.bumpMap = bumpMap; // Textura de relieve para resaltar los puntos brillantes
-            child.material.bumpScale = 0.1; // Ajusta la intensidad del relieve según sea necesario
-            
-            child.material.needsUpdate = true;
-        }
-    });
+    try {
+        const planetModel = await loadPlanetOptimized();
 
-    scene.add(planetModel);
-    camera.lookAt(planetModel.position);
-    planetModelGlobal = planetModel;
-});
+        planetModel.scale.set(0.19, 0.19, 0.19);
+
+        const textureLoader = new THREE.TextureLoader();
+        const emissiveMap = textureLoader.load('Proyect/src/assets/img/ruido1.jpg');
+        const bumpMap = textureLoader.load('Proyect/src/assets/img/ruido2.jpg');
+
+        planetModel.traverse((child) => {
+            if (child.isMesh) {
+                child.material.emissiveMap = emissiveMap;
+                child.material.emissive = new THREE.Color('#FFFFFF');
+                child.material.emissiveIntensity = 0.01;
+                
+                child.material.bumpMap = bumpMap;
+                child.material.bumpScale = 0.1;
+                child.material.needsUpdate = true;
+            }
+        });
+
+        scene.add(planetModel);
+        camera.lookAt(planetModel.position);
+        planetModel.position.x = position;
+
+        planetModelGlobal = planetModel;
+
+        return planetModel;
+    } catch (error) {
+        console.error("Error loading planet:", error);
+        return null;
+    }
+}
+
+loadPlanetModel(0)
 
 let isDragging = false;
 let lastX;
@@ -157,27 +181,60 @@ starGeometryFar.setAttribute('position', new THREE.BufferAttribute(positionsFar,
 const starFieldFar = new THREE.Points(starGeometryFar, starMaterial);
 scene.add(starFieldFar);
 //ENDING-------------------------------Estrellas de fondo-------------------------------------------
+// ... Your other imports ...
 
+let movePlanetLeft = false;
+let movePlanetRight = false
 
+document.getElementById("movePlanetLeftBtn").addEventListener("click", function() {
+    movePlanetLeft = true;
+});
 
-//renderer.render(scene, camera);
+document.getElementById("movePlanetRightBtn").addEventListener("click", function() {
+    movePlanetRight = true;
+});
+
 loopMachine.addCallback(() => {
+    // ... other animation code ...
 
+    // If planetModelGlobal exists, and the movePlanet flag is true
+    if (movePlanetLeft && planetModelGlobal) {
+        planetModelGlobal.position.x -= 10;  // Adjust speed as needed
 
-    starFieldNear.position.x += 0.05; // Mueve las estrellas cercanas más rápido
-    starFieldFar.position.x += 0.02;  // Mueve las estrellas lejanas más lento
+        if (planetModelGlobal.position.x < -600) {  // Adjust threshold as needed
+            // Dispose of resources for current planetModelGlobal
 
-    // Restablece la posición si las estrellas se han movido demasiado
-    if (starFieldNear.position.x > 1000) starFieldNear.position.x = -1000;
-    if (starFieldFar.position.x > 3000) starFieldFar.position.x = -3000;
+            loadPlanetModel(600)
+            // Change color
+            currentIndex = (currentIndex + 1) % object.length;
+        }
 
-
-    if (planetModelGlobal) { // solo rota si el modelo ya fue cargado y asignado
-        planetModelGlobal.rotation.y += 0.002; // 3. Añade la rotación al modelo en el callback
+        if (planetModelGlobal.position.x == 0){
+            movePlanetLeft = false
+        }
     }
 
+    if (movePlanetRight && planetModelGlobal) {
+        planetModelGlobal.position.x += 10;  // Adjust speed as needed
+
+        if (planetModelGlobal.position.x > 600) {  // Adjust threshold as needed
+            // Dispose of resources for current planetModelGlobal
+
+            loadPlanetModel(-600)
+            // Change color
+            currentIndex = (currentIndex - 1) % object.length;
+        }
+
+        if (planetModelGlobal.position.x == 0){
+            movePlanetRight = false
+        }
+    }
+    
     composer.render();
-}, 1000/60)
+}, 1000/60);
+
+
+
 
 
 resize.start(renderer);
