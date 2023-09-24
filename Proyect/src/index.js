@@ -6,23 +6,22 @@ import light from './utils/light.js';
 import resize from './utils/resize.js';
 import loopMachine from './utils/loopMachine.js';
 import keyListener from './utils/keyListener.js';
-import { UnrealBloomPass } from "/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js";
-import * as THREE from "/node_modules/three/build/three.module.js";
-import { EffectComposer } from "/node_modules/three/examples/jsm/postprocessing/EffectComposer.js";
-import { RenderPass } from "/node_modules/three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js";
+import * as THREE from "../node_modules/three/build/three.module.js";
+import { EffectComposer } from "../node_modules/three/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "../node_modules/three/examples/jsm/postprocessing/RenderPass.js";
 import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 const loader = new GLTFLoader();
-let planet;
 
 let planetModelGlobal;
-let object = ["callisto.glb","earth.glb"]
+let colors = ["rgb(255, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 255)"]
 let currentIndex = 0
 
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('src/assets/glt_glb/'+object[currentIndex], (gltf) => {
+            loader.load('src/assets/glt_glb/callisto.glb', (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);
@@ -126,7 +125,6 @@ composer.addPass(renderPass);
 composer.addPass(bloomPass);
 
 
-
 scene.add(light);
 camera.position.set (0, 0, 200);
 camera.lookAt(cube.position);
@@ -188,10 +186,23 @@ let movePlanetRight = false
 
 document.getElementById("movePlanetLeftBtn").addEventListener("click", function() {
     movePlanetLeft = true;
+
+    if (currentIndex == colors.length - 1){
+        currentIndex = 0
+    }else{
+        currentIndex = (currentIndex + 1);
+    }
 });
 
 document.getElementById("movePlanetRightBtn").addEventListener("click", function() {
     movePlanetRight = true;
+    
+
+    if (currentIndex == 0){
+        currentIndex = colors.length - 1
+    }else{
+        currentIndex = (currentIndex - 1);
+    }
 });
 
 loopMachine.addCallback(() => {
@@ -199,14 +210,14 @@ loopMachine.addCallback(() => {
 
     // If planetModelGlobal exists, and the movePlanet flag is true
     if (movePlanetLeft && planetModelGlobal) {
-        planetModelGlobal.position.x -= 10;  // Adjust speed as needed
+        planetModelGlobal.position.x -= 15;  // Adjust speed as needed
 
-        if (planetModelGlobal.position.x < -600) {  // Adjust threshold as needed
+        if (planetModelGlobal.position.x < -900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
 
-            loadPlanetModel(600)
-            // Change color
-            currentIndex = (currentIndex + 1) % object.length;
+            planetModelGlobal.position.x = 900
+            light.color = new THREE.Color(colors[currentIndex])
+            console.log(currentIndex)
         }
 
         if (planetModelGlobal.position.x == 0){
@@ -215,14 +226,15 @@ loopMachine.addCallback(() => {
     }
 
     if (movePlanetRight && planetModelGlobal) {
-        planetModelGlobal.position.x += 10;  // Adjust speed as needed
+        planetModelGlobal.position.x += 15;  // Adjust speed as needed
 
-        if (planetModelGlobal.position.x > 600) {  // Adjust threshold as needed
+        if (planetModelGlobal.position.x > 900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
-
-            loadPlanetModel(-600)
+            
+            planetModelGlobal.position.x = -900
             // Change color
-            currentIndex = (currentIndex - 1) % object.length;
+            light.color = new THREE.Color(colors[currentIndex])
+            console.log(currentIndex)
         }
 
         if (planetModelGlobal.position.x == 0){
