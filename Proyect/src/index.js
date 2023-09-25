@@ -109,7 +109,6 @@ renderer.domElement.addEventListener('mouseup', () => {
 });
 
 
-
 const renderPass = new RenderPass(scene, camera);
 
 // Modificamos el UnrealBloomPass
@@ -126,7 +125,7 @@ composer.addPass(bloomPass);
 
 
 scene.add(light);
-camera.position.set (0, 0, 200);
+camera.position.set (0, 0, 350);
 camera.lookAt(cube.position);
 
 //BEGING-------------------------------Estrellas de fondo-------------------------------------------
@@ -183,6 +182,7 @@ scene.add(starFieldFar);
 
 let movePlanetLeft = false;
 let movePlanetRight = false
+let seeStar = false
 
 document.getElementById("movePlanetLeftBtn").addEventListener("click", function() {
     movePlanetLeft = true;
@@ -203,6 +203,10 @@ document.getElementById("movePlanetRightBtn").addEventListener("click", function
     }else{
         currentIndex = (currentIndex - 1);
     }
+});
+
+document.getElementById("seeStarButton").addEventListener("click", function() {
+    seeStar = true;
 });
 
 loopMachine.addCallback(() => {
@@ -240,6 +244,15 @@ loopMachine.addCallback(() => {
         if (planetModelGlobal.position.x == 0){
             movePlanetRight = false
         }
+    }
+
+    if (seeStar){
+
+        if (camera.position.z <= 200){
+            seeStar = false
+        }
+        camera.position.z -= 10;
+
     }
     
     composer.render();
