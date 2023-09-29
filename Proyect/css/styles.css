@@ -14,7 +14,7 @@ body{
     position: absolute;
     left: 1%;
     top: -4%;
-    color: white;
+    color: #D9DBF0;
     font-size: 30px;
 }
 svg{
@@ -26,7 +26,7 @@ svg{
     position: absolute;
     right: 1%;
     top: 1%;
-    color: white;
+    color: #D9DBF0;
     font-size: 20px;
 }
 .topRight input{
@@ -35,11 +35,11 @@ svg{
     border: 0rem;
     padding: 1rem;
     padding-left: 2.5rem;
-    color: white;
+    color: #D9DBF0;
     background-color: #ffffff00;
     margin-bottom: 0.4rem;
     font-size: 18px;
-    border: 2px solid white ;
+    border: 2px solid #D9DBF0 ;
 }
 .topRight h4{
     margin: 0rem;
@@ -57,6 +57,7 @@ svg{
     transform: translate(-50%, -50%);
 }
 .absolutedivRight{
+    display: none;
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     position: absolute;
@@ -64,7 +65,7 @@ svg{
     left: 90%;
     transform: translate(-50%, -50%);
     text-align: right;
-    color: white;
+    color: #D9DBF0;
     
 
 }
@@ -104,17 +105,24 @@ h2{
 }
 h4{
     font-family: 'Lato', sans-serif;
-    letter-spacing: 10px;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 0.15rem solid rgba(255, 255, 255, 0.651);
+    letter-spacing: 13px;
+    font-weight: 600;
+    margin-top: 2.8rem;
 }
 .encabezado{
     margin: 0rem;
     padding: 1rem 0rem;
 }
+.encabezadoActual{
+    margin: 0rem;
+    padding: 1rem 0rem;
+    font-weight: 600;
+}
+.encabezadoActual h5{
+    font-weight: 600;
+}
 h5{
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     letter-spacing: 10px;
@@ -136,7 +144,7 @@ button{
     border-radius: 5rem;
     background-color: rgba(0, 0, 0, 0.747);
     font-family: 'Lato', sans-serif;
-    color: rgba(255, 255, 255, 0.842);
+    color: #D9DBF0;
     font-weight: 800 !important;
     position: absolute;
     top: 140%;
@@ -302,4 +310,56 @@ img{
   a{
     text-decoration: none;
     color: inherit;
+  }
+
+  .DivExoplaneta{
+    display: none;
+  }
+  .Exoplaneta {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 30%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 100% 100%, hsl(0, 0%, 15%) 40%, hsl(0, 0%, 0%) 100%);
+    box-shadow: 0 0 10px hsl(200, 100%, 80%);
+  }
+  
+  .lineDescription {
+    position: absolute;
+    width: 100px; /* Longitud de la línea */
+    height: 2px; /* Grosor de la línea */
+    border-radius: 1rem;
+    background-color: rgb(255, 255, 255); /* Color de la línea */
+    top: 25%;
+    left: 78%;
+    transform: translate(-50%, -50%) rotate(45deg); /* Posicionar y rotar la línea */
+  }
+  
+  .lineDescription::before {
+    content: "Exoplaneta"; /* Nombre del exoplaneta */
+    position: absolute;
+    right: 100%; /* Posicionar el nombre al inicio de la línea */
+    top: 50%;
+    transform: translateY(-50%); /* Centrar verticalmente el texto */
+    margin-right: 10px; /* Espacio entre la línea y el texto */
+    color: rgb(255, 255, 255); /* Color del texto */
+    font-size: 14px; /* Tamaño del texto */
+  }
+  
+  .iconBack{
+    margin-top: 2rem;
+    font-size: 30px;
+  }
+  .displayrow{
+    display: flex;
+    flex-direction: row;
+  }
+  .logo{
+    margin-bottom: 1rem;
+    width: 70%;
+    margin-top: 2.5rem;
+    margin-right: 1rem;
   }
