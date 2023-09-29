@@ -207,6 +207,17 @@ document.getElementById("movePlanetRightBtn").addEventListener("click", function
 
 document.getElementById("seeStarButton").addEventListener("click", function() {
     seeStar = true;
+     // Ocultar divs
+     var divsToHide = document.getElementsByClassName("classToHide");
+     for (var i = 0; i < divsToHide.length; i++) {
+         divsToHide[i].style.display = "none";
+     }
+ 
+     // Mostrar divs
+     var divsToShow = document.getElementsByClassName("classToShow");
+     for (var i = 0; i < divsToShow.length; i++) {
+         divsToShow[i].style.display = "block";
+     }
 });
 
 loopMachine.addCallback(() => {
