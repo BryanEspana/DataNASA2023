@@ -1,13 +1,16 @@
 body{
     margin: 0rem;
     font-family: 'Lato', sans-serif;
-    color: rgba(0, 0, 0, 0.747);
-     display: flex;
+    color:black;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     z-index: -1000 !important;
     overflow: hidden;
+}
+.bodyIndex{
+    background-color: black;
 }
 
 .absoluteLogo{
@@ -362,4 +365,8 @@ img{
     width: 70%;
     margin-top: 2.5rem;
     margin-right: 1rem;
+  }
+  .imgLogo{
+    margin-top: 1rem;
+    cursor: pointer;
   }
