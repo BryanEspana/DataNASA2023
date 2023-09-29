@@ -63,15 +63,23 @@ svg{
     display: none;
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
-    position: absolute;
     top: 50%;
-    left: 90%;
+    right: -5%;
     transform: translate(-50%, -50%);
     text-align: right;
-    color: #D9DBF0;
     
-
+    color: #D9DBF0;
 }
+.absolutedivLeft{
+    display: none;
+    position: absolute !important;
+    background-color: rgba(240, 248, 255, 0) !important;
+    top: 40%;
+    right: 73%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: white;
+  }
 .absolutedivRight h3{
     font-family: 'Lato', sans-serif;
     font-weight: 300;
@@ -80,7 +88,23 @@ svg{
     padding: 0rem;
 
 }
+.absolutedivLeft h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    margin: 0rem;
+    padding: 0rem;
+
+}
 .absolutedivRight h4{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0rem;
+    padding:  0.5rem 0rem;
+    color: rgba(255, 255, 255, 0.726);
+}
+.absolutedivLeft h4{
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 20px;
@@ -370,3 +394,4 @@ img{
     margin-top: 1rem;
     cursor: pointer;
   }
+
