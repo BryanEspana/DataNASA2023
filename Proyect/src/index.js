@@ -125,7 +125,7 @@ composer.addPass(bloomPass);
 
 
 scene.add(light);
-camera.position.set (0, 0, 350);
+camera.position.set (0, 0, 220);
 camera.lookAt(cube.position);
 
 //BEGING-------------------------------Estrellas de fondo-------------------------------------------
@@ -259,7 +259,7 @@ loopMachine.addCallback(() => {
 
     if (seeStar){
 
-        if (camera.position.z <= 200){
+        if (camera.position.z <= 180){
             seeStar = false
         }
         camera.position.z -= 10;
