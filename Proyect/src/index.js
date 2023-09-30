@@ -183,6 +183,7 @@ scene.add(starFieldFar);
 let movePlanetLeft = false;
 let movePlanetRight = false
 let seeStar = false
+let zoomBack = false
 
 document.getElementById("movePlanetLeftBtn").addEventListener("click", function() {
     movePlanetLeft = true;
@@ -210,14 +211,30 @@ document.getElementById("seeStarButton").addEventListener("click", function() {
      // Ocultar divs
      var divsToHide = document.getElementsByClassName("classToHide");
      for (var i = 0; i < divsToHide.length; i++) {
-         divsToHide[i].style.display = "none";
+         divsToHide[i].style.visibility = "hidden";
      }
  
      // Mostrar divs
      var divsToShow = document.getElementsByClassName("classToShow");
      for (var i = 0; i < divsToShow.length; i++) {
-         divsToShow[i].style.display = "block";
+         divsToShow[i].style.visibility = "visible";
      }
+});
+
+document.getElementById("returnBackToSelector").addEventListener("click", function() {
+    zoomBack = true;
+
+    // Ocultar divs
+    var divsToHide = document.getElementsByClassName("classToShow");
+    for (var i = 0; i < divsToHide.length; i++) {
+        divsToHide[i].style.visibility = "hidden";
+    }
+
+    // Mostrar divs
+    var divsToShow = document.getElementsByClassName("classToHide");
+    for (var i = 0; i < divsToShow.length; i++) {
+        divsToShow[i].style.visibility = "visible";
+    }
 });
 
 function easeInOutQuad(t) {
@@ -269,6 +286,13 @@ loopMachine.addCallback(() => {
         }
         camera.position.z -= 10;
 
+    }
+
+    if (zoomBack){
+        if (camera.position.z >= 220){
+            zoomBack = false
+        }
+        camera.position.z += 10;
     }
     
     composer.render();
