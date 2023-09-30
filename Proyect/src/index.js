@@ -244,6 +244,18 @@ function easeInOutQuad(t) {
 loopMachine.addCallback(() => {
     // ... other animation code ...
 
+    starFieldNear.position.x += 0.05; // Mueve las estrellas cercanas más rápido
+    starFieldFar.position.x += 0.02;  // Mueve las estrellas lejanas más lento
+
+    // Restablece la posición si las estrellas se han movido demasiado
+    if (starFieldNear.position.x > 1000) starFieldNear.position.x = -1000;
+    if (starFieldFar.position.x > 3000) starFieldFar.position.x = -3000;
+
+
+    if (planetModelGlobal) { // solo rota si el modelo ya fue cargado y asignado
+        planetModelGlobal.rotation.y += 0.002; // 3. Añade la rotación al modelo en el callback
+    }
+
 
     // If planetModelGlobal exists, and the movePlanet flag is true
     if (movePlanetLeft && planetModelGlobal) {
