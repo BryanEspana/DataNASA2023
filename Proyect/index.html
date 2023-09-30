@@ -21,36 +21,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,400&display=swap" rel="stylesheet">
 </head>
-<!--Controles para cambiar de estrella-->
-<div>
-    <div>
-        <!--<img src="/Proyect/src/assets/icons/chevron_left.svg">-->
-    </div>
-</div>
 
+<body class="bodyIndex">
 
 <!--Logo-->
-<div class="absoluteLogo">
-    <h4>SPACE ACCESS</h4>
-    <div class="encabezado">
-        <h5>GALLERY</h5>
+<div class="absoluteLogo classToHide">
+    <div class="displayrow">
+        <img src="/src/assets/Logos/spaceAcessComplete.png" class="logo">
+        
     </div>
-    <div class="encabezado">
-        <h5>CONTACT</h5>
-    </div>
-    <div class="encabezado">
-        <h5>ABOUT US</h5>
-    </div>
+    <a href="/src/components/galerycomponent/galery.html">
+        <div class="encabezado">
+            <h5>GALLERY</h5>
+        </div>
+    </a>
+    <a href="/src/components/contactcomponent/contactos.html">
+        <div class="encabezado">
+            <h5>CONTACT</h5>
+        </div>
+    </a>
+    <a href="/src/components/aboutUsComponent/aboutUs.html">
+        <div class="encabezado">
+            <h5>ABOUT US</h5>
+        </div>
+    </a>
 </div>
 
+<div class="absoluteLogo classToShow" style="display:none">
+    <svg class="iconBack" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+</div>
 
 <!--Buscador-->
-<div class="topRight">    
+<div class="topRight classToHide" >    
     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
     <input type="text" placeholder="SEARCH STAR">
 </div>
 <!--Nombre de estrella-->
-<div class="absolutedivCenter">
+<div class="absolutedivCenter classToHide">
     <h2>THE STAR</h2>
     <h1>FOMALHAUT</h1>
     
@@ -60,8 +67,8 @@
 
 </div>
 
-<!--Información derecha
-<div  class="absolutedivRight">
+<!--Información derecha-->
+<div  class="absolutedivRight classToShow">
     <div class="infoPlanet">
         <h3>Distance</h3>
         <h4>3,390km</h4>
@@ -78,16 +85,37 @@
         <h3>Temperature</h3>
         <h4>5,778 K</h4>
     </div>
-</div>-->
+</div>
+<!--Información izquierda-->
+<div  class="absolutedivLeft classToShow">
+    <div class="infoPlanet">
+        <h3>Name</h3>
+        <h4>3,390km</h4>
+    </div>
+    <div class="infoPlanet">
+        <h3>Age</h3>  
+        <h4>2.02 M☉</h4> 
+    </div>
+    <div class="infoPlanet">
+        <h3>Exoplanets</h3>
+        <h4>696,340 km</h4>
+    </div>
+    
+</div>
 
-<div class="absolutedivCircle circle">
+<div class="DivExoplaneta ">
+    <div class="lineDescription"></div>
+    <div class="Exoplaneta"></div>
+</div>
+
+<div class="absolutedivCircle circle classToHide" >
     <div class="point"></div>
 </div>
-<div class="absolutedivCircle2 circle2">
+<div class="absolutedivCircle2 circle2 classToHide">
     <div class="point2"></div>
 </div>
 
-<div class="carousel-container">
+<div class="carousel-container classToHide">
     <div class="carousel-arrow left">
       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512" id="movePlanetRightBtn"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
     </div>
@@ -123,4 +151,4 @@
   </script>
   
   
-  
+</body>

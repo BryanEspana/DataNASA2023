@@ -1,0 +1,58 @@
+body{
+    background-color: transparent !important;
+    background-image: url("https://stsci-opo.org/STScI-01GKMKRHSSCD5RKJYSB4DFH8D8.png");
+    background-size: cover;
+    background-color: black;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: auto;
+    color: white;
+}
+
+.backgroundBlack{
+    background-color: black !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+.encabezado{
+    margin: 0rem 1rem;
+}
+.imgLogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    max-width: 100%;
+    padding: 1rem 0rem;
+}
+
+.iconEmail{
+    position: inherit;
+    width: 30px;
+    height: 30px;
+    margin-right: 1rem;
+    fill: white;
+}
+.parrafo{
+    margin: 0rem 12rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+}

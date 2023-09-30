@@ -125,7 +125,7 @@ composer.addPass(bloomPass);
 
 
 scene.add(light);
-camera.position.set (0, 0, 350);
+camera.position.set (0, 0, 220);
 camera.lookAt(cube.position);
 
 //BEGING-------------------------------Estrellas de fondo-------------------------------------------
@@ -207,6 +207,17 @@ document.getElementById("movePlanetRightBtn").addEventListener("click", function
 
 document.getElementById("seeStarButton").addEventListener("click", function() {
     seeStar = true;
+     // Ocultar divs
+     var divsToHide = document.getElementsByClassName("classToHide");
+     for (var i = 0; i < divsToHide.length; i++) {
+         divsToHide[i].style.display = "none";
+     }
+ 
+     // Mostrar divs
+     var divsToShow = document.getElementsByClassName("classToShow");
+     for (var i = 0; i < divsToShow.length; i++) {
+         divsToShow[i].style.display = "block";
+     }
 });
 
 function easeInOutQuad(t) {
@@ -253,7 +264,7 @@ loopMachine.addCallback(() => {
 
     if (seeStar){
 
-        if (camera.position.z <= 200){
+        if (camera.position.z <= 180){
             seeStar = false
         }
         camera.position.z -= 10;
