@@ -15,7 +15,7 @@ import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoade
 const loader = new GLTFLoader();
 
 let planetModelGlobal;
-let colors = ["rgb(255, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 255)"]
+let colors = ["rgb(255, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)","rgb(255, 255, 0)"]
 let currentIndex = 0
 
 async function loadPlanetModel(position) {
@@ -209,12 +209,17 @@ document.getElementById("seeStarButton").addEventListener("click", function() {
     seeStar = true;
 });
 
+function easeInOutQuad(t) {
+    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+}
+
 loopMachine.addCallback(() => {
     // ... other animation code ...
 
+
     // If planetModelGlobal exists, and the movePlanet flag is true
     if (movePlanetLeft && planetModelGlobal) {
-        planetModelGlobal.position.x -= 15;  // Adjust speed as needed
+        planetModelGlobal.position.x -= 15  // Adjust speed as needed
 
         if (planetModelGlobal.position.x < -900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
