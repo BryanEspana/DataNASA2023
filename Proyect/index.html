@@ -59,8 +59,8 @@
 <!--Nombre de estrella-->
 <div class="absolutedivCenter classToHide">
     <h2>THE STAR</h2>
-    <h1>FOMALHAUT</h1>
-    
+    <h1 id="star-name" class="name"></h1>
+
     <button id="seeStarButton">SEE STAR</button>
     
     <p class="text">Alkes, a brilliant gem in the celestial tapestry, captivates the night sky with its luminous allure. Nestled in the constellation of Crater, this celestial luminary radiates a soft</p>
@@ -71,34 +71,44 @@
 <div  class="absolutedivRight classToShow">
     <div class="infoPlanet">
         <h3>Distance</h3>
-        <h4>3,390km</h4>
+        <h4 id="st_dist"></h4>
     </div>
     <div class="infoPlanet">
         <h3>Mass</h3>  
-        <h4>2.02 M☉</h4> 
+        <h4 id="st_mass"></h4> 
     </div>
     <div class="infoPlanet">
         <h3>Radio</h3>
-        <h4>696,340 km</h4>
+        <h4 id="st_radw"></h4>
     </div>
     <div class="infoPlanet">
         <h3>Temperature</h3>
-        <h4>5,778 K</h4>
+        <h4 id="st_steff"></h4>
     </div>
+    <!-- index.html -->
+<span id="star-name"></span>
+<span id="exoplanets"></span>
+<span id="distance"></span>
+<span id="temperature"></span>
+<span id="radius"></span>
+<span id="mass"></span>
+<span id="gravity"></span>
+<span id="age"></span>
+
 </div>
 <!--Información izquierda-->
 <div  class="absolutedivLeft classToShow">
     <div class="infoPlanet">
         <h3>Name</h3>
-        <h4>3,390km</h4>
+        <h4 id="star-name"></h4>        
     </div>
     <div class="infoPlanet">
         <h3>Age</h3>  
-        <h4>2.02 M☉</h4> 
+        <h4 id="st_age"></h4> 
     </div>
     <div class="infoPlanet">
         <h3>Exoplanets</h3>
-        <h4>696,340 km</h4>
+        <h4 id="st-ppnum"></h4>
     </div>
     
 </div>

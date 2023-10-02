@@ -1,16 +1,35 @@
-import scene from './utils/sceen.js';
-import camera from './utils/camera.js';
-import renderer from './utils/renderer.js';
+import scene from './utils/threejs/sceen.js';
+import camera from './utils/threejs/camera.js';
+import renderer from './utils/threejs/renderer.js';
 import cube from './scenes/cube.js';
-import light from './utils/light.js';
-import resize from './utils/resize.js';
-import loopMachine from './utils/loopMachine.js';
-import keyListener from './utils/keyListener.js';
+import light from './utils/threejs/light.js';
+import resize from './utils/threejs/resize.js';
+import loopMachine from './utils/threejs/loopMachine.js';
+import keyListener from './utils/threejs/keyListener.js';
 import { UnrealBloomPass } from "../node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import * as THREE from "../node_modules/three/build/three.module.js";
 import { EffectComposer } from "../node_modules/three/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "../node_modules/three/examples/jsm/postprocessing/RenderPass.js";
 import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { fetchAndFilterStars } from '../src/utils/starData.js';
+
+
+async function renderStars() {
+    const filteredStars = await fetchAndFilterStars();
+    const star = filteredStars[0];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
+  
+    document.getElementById('star-name').textContent = star[0];
+    document.getElementById('exoplanets').textContent = star[3];
+    document.getElementById('distance').textContent = star[4];
+    document.getElementById('temperature').textContent = star[5];
+    document.getElementById('radius').textContent = star[6];
+    document.getElementById('mass').textContent = star[7];
+    document.getElementById('gravity').textContent = star[8];
+    document.getElementById('age').textContent = star[9];
+  }
+  
+  renderStars();
+  
 
 const loader = new GLTFLoader();
 
@@ -21,7 +40,7 @@ let currentIndex = 0
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('src/assets/glt_glb/callisto.glb', (gltf) => {
+            loader.load('src/assets/glt_glb/Venus.glb', (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);
