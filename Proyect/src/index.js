@@ -14,6 +14,10 @@ import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoade
 import { fetchAndFilterStars } from '../src/utils/starData.js';
 
 
+let planetModelGlobal;
+let colors = ["rgb(255, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)","rgb(255, 255, 0)"]
+let currentIndex = 0
+
 async function renderStars() {
     const filteredStars = await fetchAndFilterStars();
     const star = filteredStars[0];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
@@ -30,14 +34,8 @@ async function renderStars() {
     document.getElementById('age').textContent =            star[9];
   }
   
-  renderStars();
-  
 
 const loader = new GLTFLoader();
-
-let planetModelGlobal;
-let colors = ["rgb(255, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)","rgb(255, 255, 0)"]
-let currentIndex = 0
 
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
@@ -265,6 +263,7 @@ function easeInOutQuad(t) {
 loopMachine.addCallback(() => {
     // ... other animation code ...
 
+
     starFieldNear.position.x += 0.05; // Mueve las estrellas cercanas más rápido
     starFieldFar.position.x += 0.02;  // Mueve las estrellas lejanas más lento
 
@@ -285,6 +284,7 @@ loopMachine.addCallback(() => {
         if (planetModelGlobal.position.x < -900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
 
+            renderStars();
             planetModelGlobal.position.x = 900
             light.color = new THREE.Color(colors[currentIndex])
             console.log(currentIndex)
@@ -301,6 +301,7 @@ loopMachine.addCallback(() => {
         if (planetModelGlobal.position.x > 900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
             
+            renderStars();
             planetModelGlobal.position.x = -900
             // Change color
             light.color = new THREE.Color(colors[currentIndex])
