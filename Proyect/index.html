@@ -10,6 +10,7 @@
     <!--Scripts-->
     <script src="js/three.js"></script>
     <script src="src/index.js" type="module"></script>
+    <script src="src/utils/starData.js" type="module"></script>
     
     <!--Estilos-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +61,6 @@
 <div class="absolutedivCenter classToHide">
     <h2>THE STAR</h2>
     <h1 id="star-name" class="name"></h1>
-
     <button id="seeStarButton">SEE STAR</button>
     
     <p class="text">Alkes, a brilliant gem in the celestial tapestry, captivates the night sky with its luminous allure. Nestled in the constellation of Crater, this celestial luminary radiates a soft</p>
@@ -71,44 +71,36 @@
 <div  class="absolutedivRight classToShow">
     <div class="infoPlanet">
         <h3>Distance</h3>
-        <h4 id="st_dist"></h4>
+        <h4 id="distance" style="font-size: 10px;"></h4>
     </div>
     <div class="infoPlanet">
         <h3>Mass</h3>  
-        <h4 id="st_mass"></h4> 
+        <h4 id="mass"></h4> 
     </div>
     <div class="infoPlanet">
         <h3>Radio</h3>
-        <h4 id="st_radw"></h4>
+        <h4 id="radius"></h4>
     </div>
     <div class="infoPlanet">
         <h3>Temperature</h3>
-        <h4 id="st_steff"></h4>
+        <h4 id="temperature"></h4>
     </div>
     <!-- index.html -->
-<span id="star-name"></span>
-<span id="exoplanets"></span>
-<span id="distance"></span>
-<span id="temperature"></span>
-<span id="radius"></span>
-<span id="mass"></span>
-<span id="gravity"></span>
-<span id="age"></span>
 
 </div>
 <!--Información izquierda-->
 <div  class="absolutedivLeft classToShow">
     <div class="infoPlanet">
         <h3>Name</h3>
-        <h4 id="star-name"></h4>        
+        <h4 id="star-subname"></h4>        
     </div>
     <div class="infoPlanet">
         <h3>Age</h3>  
-        <h4 id="st_age"></h4> 
+        <h4 id="age"></h4> 
     </div>
     <div class="infoPlanet">
         <h3>Exoplanets</h3>
-        <h4 id="st-ppnum"></h4>
+        <h4 id="exoplanets"></h4>
     </div>
     
 </div>

@@ -18,14 +18,16 @@ async function renderStars() {
     const filteredStars = await fetchAndFilterStars();
     const star = filteredStars[0];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
   
-    document.getElementById('star-name').textContent = star[0];
-    document.getElementById('exoplanets').textContent = star[3];
-    document.getElementById('distance').textContent = star[4];
-    document.getElementById('temperature').textContent = star[5];
-    document.getElementById('radius').textContent = star[6];
-    document.getElementById('mass').textContent = star[7];
-    document.getElementById('gravity').textContent = star[8];
-    document.getElementById('age').textContent = star[9];
+    document.getElementById('star-name').textContent =      star[0];
+    document.getElementById('star-subname').textContent =      star[0];
+
+    document.getElementById('exoplanets').textContent =     star[3];
+    document.getElementById('distance').textContent =       star[4];
+    document.getElementById('temperature').textContent =    star[5];
+    document.getElementById('radius').textContent =         star[6];
+    document.getElementById('mass').textContent =           star[7];
+    document.getElementById('gravity').textContent =        star[8];
+    document.getElementById('age').textContent =            star[9];
   }
   
   renderStars();
@@ -40,7 +42,7 @@ let currentIndex = 0
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('src/assets/glt_glb/Venus.glb', (gltf) => {
+            loader.load('src/assets/glt_glb/callisto.glb', (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);

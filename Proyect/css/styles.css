@@ -64,7 +64,7 @@ svg{
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     top: 50%;
-    right: -5%;
+    right: -00px;
     transform: translate(-50%, -50%);
     text-align: right;
     visibility: hidden;
