@@ -20,7 +20,7 @@ let currentIndex = 0
 
 async function renderStars() {
     const filteredStars = await fetchAndFilterStars();
-    const star = filteredStars[0];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
+    const star = filteredStars[currentIndex];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
   
     document.getElementById('star-name').textContent =      star[0];
     document.getElementById('star-subname').textContent =      star[0];
@@ -33,6 +33,8 @@ async function renderStars() {
     document.getElementById('gravity').textContent =        star[8];
     document.getElementById('age').textContent =            star[9];
   }
+
+renderStars()
   
 
 const loader = new GLTFLoader();
