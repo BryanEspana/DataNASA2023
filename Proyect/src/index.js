@@ -70,7 +70,7 @@ const loader = new GLTFLoader();
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('src/assets/glt_glb/callisto.glb', (gltf) => {
+            loader.load('src/assets/glt_glb/Venus.glb', (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);
@@ -345,7 +345,7 @@ loopMachine.addCallback(() => {
 
     if (seeStar){
 
-        if (camera.position.z <= 180){
+        if (camera.position.z <= 190){
             seeStar = false
         }
         camera.position.z -= 10;

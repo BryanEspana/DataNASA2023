@@ -60,28 +60,31 @@ svg{
     transform: translate(-50%, -50%);
 }
 .absolutedivRight{
-    display: block;
+    display: flex;
+    flex-direction: column;
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     top: 50%;
-    right: -00px;
+    right: -2rem;
     transform: translate(-50%, -50%);
     text-align: right;
     visibility: hidden;
     color: #D9DBF0;
     
 }
-.absolutedivLeft{
-    display: block;
+.absolutedivLeft {
+  display: flex;
+  flex-direction: column;
     position: absolute !important;
     background-color: rgba(240, 248, 255, 0) !important;
     top: 40%;
-    right: 78%;
+    left: 10rem; /* Cambia esto para ajustar el margen izquierdo en "rem" */
     transform: translate(-50%, -50%);
     text-align: left;
     color: white;
     visibility: hidden;
-  }
+}
+
 .absolutedivRight h3{
     font-family: 'Lato', sans-serif;
     font-weight: 300;
@@ -377,8 +380,11 @@ img{
     color: rgb(255, 255, 255); /* Color del texto */
     font-size: 14px; /* Tamaño del texto */
   }
-  
+  .visibileBack{
+    visibility: hidden; 
+  }
   .iconBack{
+    color: white !important;
     margin-top: 2rem;
     font-size: 30px;
   }
@@ -443,4 +449,12 @@ img{
   }
   #starResults {
     display: none;
+}
+
+.carousel-container{
+  visibility: hidden;
+}
+
+.displaynone{
+  display: none;
 }
