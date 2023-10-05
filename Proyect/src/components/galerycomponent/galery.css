@@ -14,16 +14,38 @@ h5{
     margin: 0rem 1rem;
 }
 .imagenes {
-    margin-top: 3rem;
+    justify-content: center !important;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem; /* Espacio entre las imágenes */
   }
   
-  .imagenes img {
+  .imagenes a {
+    cursor: pointer;
     width: calc((85% - 2rem) / 3); /* Ancho de las imágenes para que haya 3 por fila */
     height: auto; /* Mantener la proporción de la imagen */
     object-fit: cover; /* Ajustar la imagen al contenedor */
     margin: 1rem;
     border: 1rem solid white; /* Borde blanco alrededor de las imágenes */
   }
+  .imagenes img{
+    width: 100%;
+    height: auto;
+  }
+  .imagenes a:hover{
+    border: 1rem solid #8d8d8d; /* Borde blanco alrededor de las imágenes */
+    /*animacion*/
+    animation-name: example;
+    animation-duration: 1s;
+  }
+
+  .title{
+    color: white;
+    font-size: 20px;
+  }
+
+  .divtitle{
+    margin-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;  }

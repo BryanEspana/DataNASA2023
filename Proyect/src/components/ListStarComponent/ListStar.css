@@ -1,0 +1,52 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: black !important;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden !important;
+    color: white !important;
+    font-family: 'Lato', sans-serif;
+
+}
+.titleCenter{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.imgLogo{
+    width: 400px !important;
+}
+
+.preview{
+    width: 60px;
+    height: 60px;
+}
+
+.displayrow{
+    display: flex;
+    flex-direction: row;
+}
+.displaysComplete{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-around !important;
+    align-items: center;
+}
+
+
+.fondo{
+    position: absolute;
+    left: 15.5rem;
+    z-index: -1000 !important;
+    top: 5rem !important;
+
+}
+.fondo2{
+    position: absolute;
+    left: 35rem;
+    z-index: -1000 !important;
+    top: 5rem !important;
+
+}
