@@ -1,0 +1,56 @@
+body{
+    display: flex;
+    flex-direction: column;
+    background-color: black !important;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden !important;
+    color: white !important;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+
+}
+.titleCenter{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.imgLogo{
+    width: 400px !important;
+}
+
+.preview{
+    margin-left: 2rem;
+    height: 80px;
+}
+
+.displayrow{
+    display: flex;
+    flex-direction: row;
+}
+.displaysComplete{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-around !important;
+    align-items: center;
+}
+
+
+.fondo{
+    position: absolute;
+    left: 15.5rem;
+    z-index: -1000 !important;
+    top: 5rem !important;
+
+}
+.fondo2{
+    position: absolute;
+    left: 35rem;
+    z-index: -1000 !important;
+    top: 5rem !important;
+
+}
+.star{
+    cursor: pointer;
+}

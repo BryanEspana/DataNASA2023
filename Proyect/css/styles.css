@@ -169,7 +169,6 @@ h5:hover{
 
 
 button{
-    margin-top: 5rem;
     cursor: pointer;
     padding: 1rem;
     border: 0rem;
@@ -457,4 +456,39 @@ img{
 
 .displaynone{
   display: none;
+}
+
+.dividerColumn{
+  border-left: 1px solid #D9DBF0;
+}
+.exoplanetBtn{
+  left: 30% !important;
+}
+.btnStar{
+  left: 70% !important;
+  font-size: 30px;
+  margin: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dividerColumn{
+  margin: 1.5rem 0rem;
+  border-left: 1px solid #000000;
+}
+.titleExo{
+  font-size: 30px;
+  padding: 0rem;
+  margin: 0rem;
+}
+.btnExo{
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  text-align: end;
+  margin: 0.5rem 2rem;
+  font-weight: 600;
+}
+
+.name{
+  text-transform: uppercase;
 }
