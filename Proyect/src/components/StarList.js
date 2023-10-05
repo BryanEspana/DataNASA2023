@@ -20,8 +20,5 @@ export function StarList() {
         document.getElementById("st_logg").textContent = star[4];
         //edad de la estrella (GYr)
         document.getElementById("st_age").textContent = star[4];
-
-
-        
     });
 }

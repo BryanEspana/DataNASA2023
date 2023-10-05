@@ -11,9 +11,20 @@
     <title>Space Access</title>
 
     <!--Scripts-->
+    <script src="listStarindex.js"></script>
     
     <link rel="stylesheet" href="ListStar.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        a, a:visited, a:hover, a:active {
+            color: inherit;
+            text-decoration: none;
+        }
+        a:focus {
+            outline: none;
+        }
+    </style>
 </head>
 <body>
     <a href="/index.html" class="titleCenter">
@@ -27,46 +38,58 @@
             <path d="M761.5 0.5C658.5 132.333 514.3 491.3 761.5 872.5M137.492 0.5C34.4919 132.333 -109.708 491.3 137.492 872.5M1387.5 0.5C1284.5 132.333 1140.3 491.3 1387.5 872.5" stroke="white"/>
           </svg>
         <div class="display1">
-            <div class="displayrow star">
-                <img src="/src/assets/img/image12.png" class="preview">
-                <div style="margin-left: 1rem;">
-                    <label>Nombre </label>
-                    <p>System, galacy, etc.</p>
+            <a href="/" style="color: inherit; text-decoration: none;">
+                <div class="displayrow star" onclick="setStarIndex(0);">
+                    <img src="/src/assets/img/image12.png" class="preview">
+                    <div style="margin-left: 1rem;">
+                        <label>Nombre </label>
+                        <p>System, galacy, etc.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="displayrow star">
-                <img src="/src/assets/img/image12.png" class="preview">
-                <div style="margin-left: 1rem;">
-                    <label>Nombre </label>
-                    <p>System, galacy, etc.</p>
+            </a>
+            <a href="/" style="color: inherit; text-decoration: none;">
+                <div class="displayrow star" onclick="setStarIndex(1);">
+                    <img src="/src/assets/img/image12.png" class="preview">
+                    <div style="margin-left: 1rem;">
+                        <label>Nombre </label>
+                        <p>System, galacy, etc.</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="display2">
-            <div class="displayrow star">
-                    <img src="/src/assets/img/image12.png" class="preview">
+            <a href="/" style="color: inherit; text-decoration: none;">
+                <div class="displayrow star" onclick="setStarIndex(2);">
+                        <img src="/src/assets/img/image12.png" class="preview">
+                    <div style="margin-left: 1rem;">
+                        <label>Nombre </label>
+                        <p>System, galacy, etc.</p>
+                    </div>
+                </div>
+            </a>
+            <a href="/" style="color: inherit; text-decoration: none;">
+                <div class="displayrow star" onclick="setStarIndex(3);">
+                        <img src="/src/assets/img/image12.png" class="preview">
+                    <div style="margin-left: 1rem;">
+                        <label>Nombre </label>
+                        <p>System, galacy, etc.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <a href="/" style="color: inherit; text-decoration: none;">
+            <div class="displayrow display3 star" onclick="setStarIndex(4);">
+                <img src="/src/assets/img/image12.png" class="preview">
                 <div style="margin-left: 1rem;">
                     <label>Nombre </label>
                     <p>System, galacy, etc.</p>
                 </div>
             </div>
-            <div class="displayrow star">
-                    <img src="/src/assets/img/image12.png" class="preview">
-                <div style="margin-left: 1rem;">
-                    <label>Nombre </label>
-                    <p>System, galacy, etc.</p>
-                </div>
-            </div>
-        </div>
-        <div class="displayrow display3 star">
-            <img src="/src/assets/img/image12.png" class="preview">
-            <div style="margin-left: 1rem;">
-                <label>Nombre </label>
-                <p>System, galacy, etc.</p>
-            </div>
-        </div>
+        </a>
         
     </div>
     
 </body>
+
+
 </html>

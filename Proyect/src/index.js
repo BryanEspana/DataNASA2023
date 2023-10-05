@@ -15,14 +15,25 @@ import { fetchAndFilterStars } from '../src/utils/starData.js';
 
 
 let planetModelGlobal;
-let colors = ["rgb(255, 0, 255)","rgb(255, 0, 0)","rgb(255, 255, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)","rgb(255, 255, 0)"]
+let colors = ["rgb(255, 255, 255)","rgb(255, 0, 0)","rgb(255, 0, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)","rgb(255, 255, 0)"]
 let currentIndex = 0
 
-async function renderStars() {
-    const filteredStars = await fetchAndFilterStars();
-    const star = filteredStars[currentIndex];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
-    displayStarInfo(star);
+if (localStorage.getItem('starIndex') !== null) {
+    currentIndex = parseInt(localStorage.getItem('starIndex'))
+    console.log("Loaded starIndex from localStorage ", currentIndex)
+} else {
+    currentIndex = 0
+    console.log("Initialized starIndex to 0")
 }
+
+
+function setStarIndex(index) {
+
+    localStorage.setItem('starIndex',index.toString())
+}
+
+
+
 function displayStarInfo(star) {
     document.getElementById('star-name').textContent =      star[0];
     document.getElementById('star-subname').textContent =   star[0];
@@ -33,10 +44,15 @@ function displayStarInfo(star) {
     document.getElementById('mass').textContent =           star[7];
     document.getElementById('gravity').textContent =        star[8];
     document.getElementById('age').textContent =            star[9];
-  }
+}
 
+async function renderStars() {
+    const filteredStars = await fetchAndFilterStars();
+    const star = filteredStars[currentIndex];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
+    displayStarInfo(star);
+}
 renderStars()
-  
+
 //-----------------------BUSCADOR
 
 function handleResultClick(event) {
@@ -172,7 +188,7 @@ composer.renderToScreen = true;
 composer.addPass(renderPass);
 composer.addPass(bloomPass);
 
-
+light.color = new THREE.Color(colors[currentIndex])
 scene.add(light);
 camera.position.set (0, 0, 220);
 camera.lookAt(cube.position);
@@ -286,9 +302,9 @@ document.getElementById("returnBackToSelector").addEventListener("click", functi
     }
 });
 
-function easeInOutQuad(t) {
-    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-}
+
+
+
 
 loopMachine.addCallback(() => {
     // ... other animation code ...
