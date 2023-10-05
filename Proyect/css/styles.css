@@ -420,3 +420,27 @@ img{
   span{
     color: white;
   }
+  .carousel-item{
+    background-color: #D9DBF0;
+  }
+  .carousel-item-active{
+    transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 0.29);
+  }
+
+  .selectBuscador{
+    position: absolute;
+    top: 66px;
+    right: 20px;
+    width: 270px;
+    height: 60px;
+    overflow-y: auto;
+    border-radius: 0.0001rem;
+    border: none;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+  }
+  #starResults {
+    display: none;
+}

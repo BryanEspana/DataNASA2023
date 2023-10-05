@@ -17,18 +17,55 @@ export async function fetchAndFilterStars() {
   }
   
   window.addEventListener('DOMContentLoaded', async () => {
-    // Todo tu código va aquí dentro
+    const allStars = await fetchAndFilterStars();
+    const selectElement = document.getElementById('starResults');
+    const noResultsElement = document.getElementById("noResults");
 
-    const stars = await fetchAndFilterStars();
-    displayStarData(stars[0]);
+    const inputSearch = document.querySelector('input[placeholder="SEARCH STAR"]');
+    inputSearch.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
 
-    function displayStarData(starData) {
-        document.getElementById("star_name").textContent = starData[0];
-        document.getElementById("star_subname").textContent = starData[0];
-        document.getElementById("hd_name").textContent = starData[1];
-        document.getElementById("temperatura").textContent = starData[5];
-        // ... y así sucesivamente para otros datos
-    }
+        // Si el término de búsqueda está vacío
+        if (!searchTerm) {
+            selectElement.style.display = 'none';  // Escondemos el <select>
+            noResultsElement.style.display = 'none';  // Escondemos el mensaje de "No se encontraron resultados"
+            return;
+        }
 
-    // ... [resto de tu código]
+        const filteredStars = allStars.filter(starData => starData[0].toLowerCase().includes(searchTerm));
+
+        if (filteredStars.length > 0) {
+            selectElement.style.display = 'block';  // Mostramos el <select>
+            noResultsElement.style.display = 'none';
+
+            // Limpiamos el contenido anterior del select
+            selectElement.innerHTML = '';
+
+            // Añadimos las estrellas filtradas al select
+            for (let star of filteredStars) {
+                const option = document.createElement('option');
+                option.value = star[0];
+                option.textContent = star[0];
+                selectElement.appendChild(option);
+            }
+        } else {
+            selectElement.style.display = 'none';  // Escondemos el <select>
+            noResultsElement.style.display = 'block';  // Mostramos el mensaje de "No se encontraron resultados"
+        }
+    });
+
+    selectElement.addEventListener('change', function() {
+      const selectedStarName = this.value;
+    
+      // Si la opción por defecto es seleccionada, simplemente regresa y no hagas nada.
+      if (!selectedStarName) return;
+      
+      // Resto del código...
+      const selectedStar = allStars.find(star => star[0] === selectedStarName);
+      if (selectedStar) {
+          currentIndex = allStars.indexOf(selectedStar);
+          displayStarInfo(selectedStar);
+      }
+  });
 });
+

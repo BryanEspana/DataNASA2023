@@ -21,10 +21,11 @@ let currentIndex = 0
 async function renderStars() {
     const filteredStars = await fetchAndFilterStars();
     const star = filteredStars[currentIndex];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
-  
+    displayStarInfo(star);
+}
+function displayStarInfo(star) {
     document.getElementById('star-name').textContent =      star[0];
-    document.getElementById('star-subname').textContent =      star[0];
-
+    document.getElementById('star-subname').textContent =   star[0];
     document.getElementById('exoplanets').textContent =     star[3];
     document.getElementById('distance').textContent =       star[4];
     document.getElementById('temperature').textContent =    star[5];
@@ -36,6 +37,33 @@ async function renderStars() {
 
 renderStars()
   
+//-----------------------BUSCADOR
+
+function handleResultClick(event) {
+    const starName = event.target.textContent;
+
+    // Asumo que ya tienes una función para buscar estrella por nombre.
+    const star = findStarByName(starName);
+
+    if (star) {
+        currentIndex = starsData.indexOf(star);  // Asumo que 'starsData' es tu array original de estrellas.
+        renderStars();
+    }
+}
+
+function displayStarResults(stars) {
+    const resultsContainer = document.getElementById("starResults");
+    resultsContainer.innerHTML = "";  // Limpia resultados anteriores
+
+    stars.forEach(star => {
+        const resultDiv = document.createElement("div");
+        resultDiv.textContent = star[0];  // Asume que el nombre es el primer elemento de tu array de estrella
+        resultDiv.addEventListener("click", handleResultClick);  // Agregar listener
+        resultsContainer.appendChild(resultDiv);
+    });
+}
+
+
 
 const loader = new GLTFLoader();
 
@@ -333,7 +361,6 @@ loopMachine.addCallback(() => {
     
     composer.render();
 }, 1000/60);
-
 
 
 
