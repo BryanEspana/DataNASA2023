@@ -178,7 +178,7 @@ renderer.domElement.addEventListener('mouseup', () => {
 
 function animate() {
     requestAnimationFrame(animate);
-    planetModelGlobal.rotation.y += 0.005;
+    planetModelGlobal.rotation.y += 0.002;
     renderer.render(scene, camera);
 }
 animate();

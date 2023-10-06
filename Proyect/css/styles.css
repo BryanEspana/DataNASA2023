@@ -398,6 +398,7 @@ img{
   }
   .iconBack{
     color: white !important;
+    fill: white;
     margin-top: 2rem;
     font-size: 30px;
   }

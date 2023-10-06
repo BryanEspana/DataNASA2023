@@ -1,0 +1,53 @@
+body{
+    color: white;
+    background-color: black;
+}
+
+.courser{
+    cursor: pointer;
+  }
+
+  .absoluteLogo{
+    position: absolute;
+    left: 1%;
+    top: -4%;
+    color: #D9DBF0;
+    font-size: 30px;
+}
+.iconBack{
+    color: white !important;
+    margin-top: 2rem;
+    font-size: 30px;
+  }
+
+  h1{
+    color: white;
+  }
+
+  .absolutedivRight{
+    color: white;
+    visibility: visible;
+  }
+  
+  .NombreExo{
+    font-size: 80px;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid white;
+  }
+
+  .subExo{
+    font-size: 30px;
+    padding-bottom: 0.5rem;
+    letter-spacing: 2px;
+    width: min-content;
+    align-items:end;
+    border-bottom: 2px solid white;
+  }
+
+  .infoPlanet{
+
+    justify-content: end;
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+  }
