@@ -84,6 +84,20 @@ svg{
     color: white;
     visibility: hidden;
 }
+.absolutedivLeftBtn{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+    position: absolute !important;
+    background-color: rgba(240, 248, 255, 0) !important;
+    bottom: 10%;
+    left: 10rem; /* Cambia esto para ajustar el margen izquierdo en "rem" */
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: white;
+    visibility: hidden;
+}
+
 
 .absolutedivRight h3{
     font-family: 'Lato', sans-serif;
@@ -491,4 +505,15 @@ img{
 
 .name{
   text-transform: uppercase;
+}
+
+.whiteA{
+  color: white;
+  padding: 0rem;
+  margin: 0rem;
+  margin-left: 8rem;
+  font-size: 35px;
+  text-transform: uppercase;
+  text-decoration: underline;
+
 }
