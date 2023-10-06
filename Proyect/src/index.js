@@ -15,7 +15,8 @@ import { fetchAndFilterStars } from '../src/utils/starData.js';
 
 
 let planetModelGlobal;
-let colors = ["rgb(255, 255, 255)","rgb(255, 0, 0)","rgb(255, 0, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)","rgb(255, 255, 0)"]
+let starsData;
+let colors = ["rgb(255, 255, 255)","rgb(255, 0, 0)","rgb(255, 0, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)"]
 let currentIndex = 0
 
 if (localStorage.getItem('starIndex') !== null) {
@@ -45,12 +46,57 @@ function displayStarInfo(star) {
 
 async function renderStars() {
     const filteredStars = await fetchAndFilterStars();
+    
     const star = filteredStars[currentIndex];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
+    starsData = star
     displayStarInfo(star);
 }
 renderStars()
 
-//-----------------------BUSCADOR
+function convert_K_to_RGB(colour_temperature) {
+    // Algorithm courtesy of 
+    // http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
+
+    // Range check
+    if (colour_temperature < 1000) {
+        colour_temperature = 1000;
+    } else if (colour_temperature > 40000) {
+        colour_temperature = 40000;
+    }
+
+    var tmp_internal = colour_temperature / 100.0;
+    var red, green, blue;
+
+    // Red
+    if (tmp_internal <= 66) {
+        red = 255;
+    } else {
+        var tmp_red = 329.698727446 * Math.pow(tmp_internal - 60, -0.1332047592);
+        red = (tmp_red < 0) ? 0 : (tmp_red > 255) ? 255 : tmp_red;
+    }
+
+    // Green
+    if (tmp_internal <= 66) {
+        var tmp_green = 99.4708025861 * Math.log(tmp_internal) - 161.1195681661;
+        green = (tmp_green < 0) ? 0 : (tmp_green > 255) ? 255 : tmp_green;
+    } else {
+        var tmp_green = 288.1221695283 * Math.pow(tmp_internal - 60, -0.0755148492);
+        green = (tmp_green < 0) ? 0 : (tmp_green > 255) ? 255 : tmp_green;
+    }
+
+    // Blue
+    if (tmp_internal >= 66) {
+        blue = 255;
+    } else if (tmp_internal <= 19) {
+        blue = 0;
+    } else {
+        var tmp_blue = 138.5177312231 * Math.log(tmp_internal - 10) - 305.0447927307;
+        blue = (tmp_blue < 0) ? 0 : (tmp_blue > 255) ? 255 : tmp_blue;
+    }
+
+    // Return RGB values as an array
+    return [red, green, blue];
+}
 
 function handleResultClick(event) {
     const starName = event.target.textContent;
@@ -327,7 +373,10 @@ loopMachine.addCallback(() => {
 
             renderStars();
             planetModelGlobal.position.x = 900
-            light.color = new THREE.Color(colors[currentIndex])
+            let starColor = convert_K_to_RGB(starsData[5])
+            console.log(starColor)
+
+            light.color = new THREE.Color("rgb(" + starColor[0] + "," + starColor[1] + "," + starColor[2] + ")");
             console.log(currentIndex)
         }
 
@@ -345,7 +394,11 @@ loopMachine.addCallback(() => {
             renderStars();
             planetModelGlobal.position.x = -900
             // Change color
-            light.color = new THREE.Color(colors[currentIndex])
+
+            let starColor = convert_K_to_RGB(starsData[5])
+            console.log(starColor)
+
+            light.color = new THREE.Color("rgb(" + starColor[0] + "," + starColor[1] + "," + starColor[2] + ")");
             console.log(currentIndex)
         }
 
