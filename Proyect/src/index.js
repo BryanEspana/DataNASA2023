@@ -26,13 +26,10 @@ if (localStorage.getItem('starIndex') !== null) {
     console.log("Initialized starIndex to 0")
 }
 
-
 function setStarIndex(index) {
 
     localStorage.setItem('starIndex',index.toString())
 }
-
-
 
 function displayStarInfo(star) {
     document.getElementById('star-name').textContent =      star[0];
@@ -78,8 +75,6 @@ function displayStarResults(stars) {
         resultsContainer.appendChild(resultDiv);
     });
 }
-
-
 
 const loader = new GLTFLoader();
 

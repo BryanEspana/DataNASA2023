@@ -1,0 +1,155 @@
+
+<head>
+    <!--Metadata-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Titulo-->
+    <title>Space Access</title>
+
+    <!--Scripts-->
+    <script src="../../../js/three.js"></script>
+    <script src="../../viewExoplanet.js" type="module"></script>
+
+    
+    <!--Estilos-->
+    <link rel="stylesheet" href="../../../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,400&display=swap" rel="stylesheet">
+</head>
+
+<body class="bodyIndex" id="scene-container">
+
+<!--Logo-->
+<div class="absoluteLogo classToHide">
+    <div class="displayrow">
+        <img src="/src/assets/Logos/spaceAcessComplete.png" class="logo">
+        
+    </div>
+    <a href="/src/components/galerycomponent/galery.html">
+        <div class="encabezado">
+            <h5>HOME</h5>
+        </div>
+    </a>
+    <a href="/src/components/contactcomponent/contactos.html">
+        <div class="encabezado">
+            <h5>CONTACT</h5>
+        </div>
+    </a>
+    <a href="/src/components/aboutUsComponent/aboutUs.html">
+        <div class="encabezado">
+            <h5>ABOUT US</h5>
+        </div>
+    </a>
+</div>
+<!--Boton de regresar-->
+<div class="absoluteLogo visibileBack classToShow courser" style="display:block">
+    <svg id="returnBackToSelector" class="iconBack" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+</div>
+
+<!--Buscador-->
+    <svg xmlns="http://www.w3.org/2000/svg" class="displaynone" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+
+<!--Nombre de estrella-->
+<div class="absolutedivCenter classToHide">
+    <h2>THE STAR</h2>
+    <h1 id="star-name" class="name"></h1>
+    <div class="displayrow" style="width: 100%; justify-content: center;">
+        <a href="./src/components/listExoplanetComponent/ListExoplanets.html" class="btnExo">
+            <p class="titleExo"> See</p>
+            <p class="titleExo">exoplanet</p>
+        </a>
+        <div class="dividerColumn">
+        </div>
+        <p id="seeStarButton"  class="btnStar">See Star</p>
+
+    </div>
+</div>
+
+<!--Información derecha-->
+<div  class="absolutedivRight classToShow">
+    <div class="infoPlanet">
+        <h3>Distance</h3>
+        <h4 id="distance" style="font-size: 10px;"></h4>
+    </div>
+    <div class="infoPlanet">
+        <h3>Mass</h3>  
+        <h4 id="mass"></h4> 
+    </div>
+    <div class="infoPlanet">
+        <h3>Radio</h3>
+        <h4 id="radius"></h4>
+    </div>
+    <div class="infoPlanet">
+        <h3>Temperature</h3>
+        <h4 id="temperature"></h4>
+    </div>
+    <!-- index.html -->
+
+</div>
+<!--Información izquierda-->
+<div  class="absolutedivLeft classToShow">
+    <div class="infoPlanet">
+        <h3>Name</h3>
+        <h4 id="star-subname"></h4>        
+    </div>
+    <div class="infoPlanet">
+        <h3>Age</h3>  
+        <h4 id="age"></h4> 
+    </div>
+    <div class="infoPlanet">
+        <h3>Exoplanets</h3>
+        <h4 id="exoplanets"></h4>
+      
+    </div>
+    
+</div>
+
+<div class="DivExoplaneta ">
+    <div class="lineDescription"></div>
+    <div class="Exoplaneta"></div>
+</div>
+
+
+<div class="carousel-container classToShow">
+    <div class="carousel-arrow left">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512" id="movePlanetRightBtn"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+    </div>
+    <div class="carousel-item" data-index="0"></div>
+    <div class="carousel-item" data-index="1"></div>
+    <div class=" carousel-item carousel-item-active" data-index="2"></div>
+    <div class="carousel-item" data-index="3"></div>
+    <div class="carousel-item" data-index="4"></div>
+    <div class="carousel-arrow right">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512" id="movePlanetLeftBtn"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+    </div>
+  </div>
+
+    
+
+
+
+
+
+
+<!--Scripts-->
+<script>
+    const items = document.querySelectorAll('.carousel-item');
+    let activeIndex = 0;
+  
+    items.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        items[activeIndex].classList.remove('active');
+        item.classList.add('active');
+        activeIndex = index;
+      });
+    });
+  </script>
+  
+  
+</body>
