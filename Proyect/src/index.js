@@ -18,6 +18,7 @@ let planetModelGlobal;
 let starsData;
 let colors = ["rgb(255, 255, 255)","rgb(255, 0, 0)","rgb(255, 0, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)"]
 let currentIndex = 0
+let initalColor;
 
 if (localStorage.getItem('starIndex') !== null) {
     currentIndex = parseInt(localStorage.getItem('starIndex'))
@@ -53,7 +54,8 @@ async function renderStars() {
 }
 renderStars()
 
-function convert_K_to_RGB(colour_temperature) {
+
+async function convert_K_to_RGB(colour_temperature) {
     // Algorithm courtesy of 
     // http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
 
@@ -98,6 +100,9 @@ function convert_K_to_RGB(colour_temperature) {
     return [red, green, blue];
 }
 
+
+
+
 function handleResultClick(event) {
     const starName = event.target.textContent;
 
@@ -127,7 +132,7 @@ const loader = new GLTFLoader();
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('src/assets/glt_glb/Venus.glb', (gltf) => {
+            loader.load('src/assets/glt_glb/Venus2.glb', (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);
@@ -148,9 +153,13 @@ async function loadPlanetModel(position) {
                 child.material.emissiveMap = emissiveMap;
                 child.material.emissive = new THREE.Color('#FFFFFF');
                 child.material.emissiveIntensity = 0.01;
+
                 
                 child.material.bumpMap = bumpMap;
                 child.material.bumpScale = 0.1;
+                
+                child.material.color = new THREE.Color("rgb(255, 255, 255)")
+                child.material.opacity = 0.0;
                 child.material.needsUpdate = true;
             }
         });
@@ -221,8 +230,8 @@ const renderPass = new RenderPass(scene, camera);
 // Modificamos el UnrealBloomPass
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
 bloomPass.threshold = 0.1;
-bloomPass.strength = 10;  // Aumentamos la intensidad del resplandor
-bloomPass.radius = 1;
+bloomPass.strength = 4;  // Aumentamos la intensidad del resplandor
+bloomPass.radius = 2;
 
 const composer = new EffectComposer(renderer);
 composer.setSize(window.innerWidth, window.innerHeight);
@@ -230,7 +239,7 @@ composer.renderToScreen = true;
 composer.addPass(renderPass);
 composer.addPass(bloomPass);
 
-light.color = new THREE.Color(colors[currentIndex])
+
 scene.add(light);
 camera.position.set (0, 0, 220);
 camera.lookAt(cube.position);
@@ -350,8 +359,6 @@ document.getElementById("returnBackToSelector").addEventListener("click", functi
 
 loopMachine.addCallback(() => {
     // ... other animation code ...
-
-
     starFieldNear.position.x += 0.05; // Mueve las estrellas cercanas más rápido
     starFieldFar.position.x += 0.02;  // Mueve las estrellas lejanas más lento
 
@@ -362,6 +369,7 @@ loopMachine.addCallback(() => {
 
     if (planetModelGlobal) { // solo rota si el modelo ya fue cargado y asignado
         planetModelGlobal.rotation.y += 0.002; // 3. Añade la rotación al modelo en el callback
+
     }
 
 
