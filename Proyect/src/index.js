@@ -55,7 +55,7 @@ async function renderStars() {
 renderStars()
 
 
-async function convert_K_to_RGB(colour_temperature) {
+function convert_K_to_RGB(colour_temperature) {
     // Algorithm courtesy of 
     // http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
 
@@ -239,7 +239,7 @@ composer.renderToScreen = true;
 composer.addPass(renderPass);
 composer.addPass(bloomPass);
 
-
+light.color = new THREE.Color(colors[currentIndex]);
 scene.add(light);
 camera.position.set (0, 0, 220);
 camera.lookAt(cube.position);
