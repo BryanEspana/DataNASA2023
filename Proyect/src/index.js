@@ -140,8 +140,8 @@ async function loadPlanetModel(position) {
         planetModel.scale.set(0.19, 0.19, 0.19);
 
         const textureLoader = new THREE.TextureLoader();
-        const emissiveMap = textureLoader.load('Proyect/src/assets/img/ruido1.jpg');
-        const bumpMap = textureLoader.load('Proyect/src/assets/img/ruido2.jpg');
+        const emissiveMap = textureLoader.load('/src/assets/img/ruido1.jpg');
+        const bumpMap = textureLoader.load('/src/assets/img/ruido2.jpg');
 
         planetModel.traverse((child) => {
             if (child.isMesh) {
@@ -169,6 +169,7 @@ async function loadPlanetModel(position) {
 }
 
 loadPlanetModel(0)
+
 
 let isDragging = false;
 let lastX;
@@ -376,7 +377,10 @@ loopMachine.addCallback(() => {
             let starColor = convert_K_to_RGB(starsData[5])
             console.log(starColor)
 
-            light.color = new THREE.Color("rgb(" + starColor[0] + "," + starColor[1] + "," + starColor[2] + ")");
+            let color = "rgb(" + parseInt(starColor[0]) + "," + parseInt(starColor[1]) + "," + parseInt(starColor[2]) + ")"
+            console.log(color)
+
+            light.color = new THREE.Color(color);
             console.log(currentIndex)
         }
 
@@ -398,7 +402,10 @@ loopMachine.addCallback(() => {
             let starColor = convert_K_to_RGB(starsData[5])
             console.log(starColor)
 
-            light.color = new THREE.Color("rgb(" + starColor[0] + "," + starColor[1] + "," + starColor[2] + ")");
+            let color = "rgb(" + parseInt(starColor[0]) + "," + parseInt(starColor[1]) + "," + parseInt(starColor[2]) + ")"
+            console.log(color)
+
+            light.color = new THREE.Color(color);
             console.log(currentIndex)
         }
 
