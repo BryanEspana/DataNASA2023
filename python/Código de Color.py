@@ -18,7 +18,7 @@ st_age = edad de la estrella (GYr)
 
 
 import math
-import pandas as pd
+"""import pandas as pd
 import numpy as np
 
 
@@ -74,7 +74,7 @@ for i in range(len(Final_Stars)):
     t_eff.append(temperature)
     
 
-
+"""
 def convert_K_to_RGB(colour_temperature):
     """
     Converts from K to RGB, algorithm courtesy of 
@@ -102,6 +102,7 @@ def convert_K_to_RGB(colour_temperature):
     
     # green
     if tmp_internal <=66:
+        
         tmp_green = 99.4708025861 * math.log(tmp_internal) - 161.1195681661
         if tmp_green < 0:
             green = 0
@@ -136,9 +137,11 @@ def convert_K_to_RGB(colour_temperature):
 
 rgb = []#código de las estrellas en orden a como aparecen en la lista de las estrellas deseadas
 
-for i in t_eff:
+"""for i in t_eff:
     color_rgb = convert_K_to_RGB(i)
-    rgb.append(color_rgb)
+    rgb.append(color_rgb)"""
+
+print(convert_K_to_RGB(11962))
 
 #df = pd.DataFrame(zip(name,t_eff,rgb)) #Código solo para imprimir una tabla 
 #print(df)

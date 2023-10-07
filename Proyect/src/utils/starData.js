@@ -3,6 +3,7 @@ export async function fetchAndFilterStars() {
     try {
       const response = await fetch('https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI?table=missionstars&select=distinct%20star_name,hd_name,tm_name,st_ppnum,st_dist,st_teff,st_rad,st_mass,st_logg,st_age&limit=10');
       const data = await response.text();
+
       const lines = data.trim().split('\n');
       const starsData = lines.map(line => line.split(','));
       return filterStars(starsData);
@@ -12,7 +13,7 @@ export async function fetchAndFilterStars() {
   }
   
   function filterStars(starsData) {
-    const targetStars = ['HIP 49669', 'Fomalhaut', 'alf Cen A', 'alf Ari', 'HIP 61084'];
+    const targetStars = ['alf Tau','HD 27442', '14 Her','61 Vir','tau Boo'];
     return starsData.filter(starData => targetStars.includes(starData[0]));
   }
   
