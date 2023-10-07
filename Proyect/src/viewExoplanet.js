@@ -40,29 +40,6 @@ const exoPlanetData = [
     [["SA-2977","1.04 UA","4.72 Tierras","1.68","10C"]]
 ]
 
-function displayInfoInSelector(){
-    if (exoPlanetData[starIndex][0][0]) {
-        document.getElementById('exoplanet1name').textContent = exoPlanetData[starIndex][0][0];
-    } else {
-        document.getElementById('exoplanet1').style.visibility = "hidden";
-    }
-
-    if (exoPlanetData[starIndex][1][0]) {
-        document.getElementById('exoplanet2name').textContent = exoPlanetData[starIndex][1][0];
-    }
-    else {
-        document.getElementById('exoplanet2').style.visibility = "hidden";
-    }
-
-    if (exoPlanetData[starIndex][2][0]) {
-        document.getElementById('exoplanet3name').textContent = exoPlanetData[starIndex][2][0];
-    }
-    else {
-        document.getElementById('exoplanet3').style.visibility = "hidden";
-    }
-}
-
-displayInfoInSelector();
 
 function displayPlanetInfo() {
 
