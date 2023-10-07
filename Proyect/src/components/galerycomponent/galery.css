@@ -29,7 +29,6 @@ h5{
     border: 1rem solid white; /* Borde blanco alrededor de las imágenes */
   }
   .imagenes img{
-    opacity: 0.5;
     width: 100%;
     height: auto;
   }
@@ -58,5 +57,21 @@ h5{
       position: absolute;
       font-weight: 600;
       top: 50%;
-      left: 23%;
+      left: 26%;
+      font-size: 40px;
+    }
+
+    .title2{
+      color: white;
+      text-transform: uppercase;
+      font-size: 30px;
+      position: absolute;
+      font-weight: 600;
+      top: 50%;
+      right: 29%;
+      font-size: 40px;
+    }
+
+    .imagenesss{
+      opacity: 0.5;
     }

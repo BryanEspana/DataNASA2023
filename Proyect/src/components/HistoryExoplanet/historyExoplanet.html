@@ -1,5 +1,8 @@
 <!--SA-2977-->
-
+<!--Boton de regresar-->
+<div class="absoluteLogo  classToShow courser" style="display:block" id="backButton">
+    <svg id="returnBackToSelector" class="iconBack" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+</div>
 <head>
     <!--Metadata-->
     <meta charset="UTF-8">
@@ -18,8 +21,42 @@
 <body>
   <h1>SA-2977</h1>
 
-  <div class="displayrow">
-    <p>Bienvenidos a SA-2977, un exoplaneta único en el espacio, donde te espera una oportunidad de vida inigualable. En este rincón del universo, la tranquilidad y la serenidad son la norma, y a pesar de las bajas temperaturas que lo caracterizan, la belleza y la abundancia son parte integral de cada paisaje.</p>
-  </div>
+    <div class="displayrow pages">
+        <div>
+            <p class="left">Bienvenidos a SA-2977, un exoplaneta único en el espacio, donde te espera una oportunidad de vida inigualable. En este rincón del universo, la tranquilidad y la serenidad son la norma, y a pesar de las bajas temperaturas que lo caracterizan, la belleza y la abundancia son parte integral de cada paisaje.</p>
+            <p class="left">SA-2977 es un verdadero prodigio de la astrobiología. A partir de la temperatura efectiva y luminosidad de su estrella, TOI-2977, se estima que el planeta debe estar a 1.94 Unidades astronómicas de su estrella anfitriona. Con esta información se estima que un año se extenderá a lo largo de 398 días terrestres, la vida aquí ha evolucionado de manera extraordinaria para adaptarse a condiciones únicas. Esta adaptación incluye la optimización de la captura de la luz estelar, lo que nos permite aprovechar al máximo cada momento del día.</p>
+        </div>
+        <img src="../../assets/img/1.png" class="imgs right">
+    </div>
+    <div class="displayrow pages">
+        <img src="../../assets/img/2.png" class="imgs left">
+        <div>
+            <p class="right">Aunque podrás reconocer la belleza de la vegetación terrestre en SA-2977, la verdadera joya de nuestra gélida biosfera se encuentra en nuestros cuerpos de agua y regiones litológicas. Estos lugares albergan una riqueza inigualable de vida marina y criaturas exóticas. Entre ellas, algunas son autótrofas, capaces de producir su propio alimento a partir de la luz estelar, mientras que otras son heterótrofas y dependen de estas fuentes de energía.</p>
+            <p class="right">Los ciclos biogeoquímicos desempeñan un papel esencial en el equilibrio de nuestro ecosistema. Los majestuosos volcanes y las formaciones rocosas son nuestros aliados en este proceso, liberando minerales y nutrientes esenciales en el suelo y el agua, permitiendo que la vida prospere en este entorno único.</p>
+        </div>
+    </div>
+    
+    <div class="displayrow pages">
+        <div>
+            <p class="left">Nuestra sociedad en SA-2977 se caracteriza por su profundo respeto por el medio ambiente y su firme compromiso con la sostenibilidad. Hemos establecido un día de sobregiro en el que reflexionamos y trabajamos incansablemente para minimizar nuestra huella ecológica. La fotosíntesis y la fijación de carbono son procesos vitales aquí, ya que los organismos autótrofos convierten la luz estelar en energía mientras capturan el carbono en sus estructuras, lo que contribuye a mantener un equilibrio ecológico sostenible.</p>
+            <p class="left">Una característica única de SA-2977 es nuestra alta producción de energía solar gracias a la radiación. Esto nos permite prescindir por completo de empresas eléctricas y combustibles, ya que vivimos en un planeta nocturno. Aquí, no hay necesidad de madrugar ni de preocuparnos por los costos de energía.</p>
+        </div>
+        <img src="../../assets/img/3.png" class="imgs right">
+    </div>
+    <div class="displayrow pages">
+        <img src="../../assets/img/4.png" class="imgs left">
+        <div>
+            <p class="right">Para mantenernos cómodos en este ambiente fresco, contamos con tecnología de aislamiento y sistemas de calefacción eficientes. Así, disfrutamos de un equilibrio ecológico envidiable al tiempo que vivimos de manera conveniente y económicamente sostenible.</p>
+            <p class="right">Ven y únete a nosotros en SA-2977, donde la aventura, la exploración y la coexistencia armoniosa con la naturaleza te esperan. Aquí, la promesa de una vida plena se combina con el compromiso inquebrantable de cuidar y proteger nuestro hogar. Bienvenidos a SA-2977, la segunda posible Tierra que siempre soñaste, un testimonio viviente de la capacidad de la vida para florecer en los rincones más inverosímiles del universo.</p>
+        </div>
+    </div>
+    <div style="padding-bottom: 5rem;"></div>
 </body>
 
+
+
+<script>
+        document.getElementById("backButton").addEventListener("click", function() {
+    window.history.back();
+});
+</script>
