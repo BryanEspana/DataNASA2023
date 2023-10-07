@@ -1,8 +1,36 @@
 import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 
-exoPlanetData = [
+let planetIndex;
+let starIndex;
 
+if (localStorage.getItem('planetIndexLS') !== null) {
+    currentIndex = parseInt(localStorage.getItem('planetIndexLS'))
+    console.log("Loaded planetIndexLS from localStorage ", currentIndex)
+} else {
+    currentIndex = 0
+    console.log("Initialized planetIndexLS to 0")
+}
+
+if (localStorage.getItem('starIndex') !== null) {
+    currentIndex = parseInt(localStorage.getItem('starIndex'))
+    console.log("Loaded starIndex from localStorage ", currentIndex)
+} else {
+    currentIndex = 0
+    console.log("Initialized starIndex to 0")
+}
+
+function setPlanetIndex(index) {
+
+    localStorage.setItem('planetIndexLS',index.toString())
+}
+
+exoPlanetData = [
+    [["tau Boo b","1.4","1.44","nan","15.6521"]],
+    [["14 Her b","0.9","0.93","nan","17.9323"]],
+    [["61 Vir b","0.94","0.96","nan","8.50332"],["61 Vir c","0.91","1.03","nan","8.50332"],["61 Vir d","0.94","0.96","nan","8.50332"]],
+    [["alf Tau b","1.13","45.1","nan","20.4332"]]
+    [["HD 27442 b","1.23","nan","nan","18.2704"]],
 ]
 
 

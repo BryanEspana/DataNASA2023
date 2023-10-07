@@ -75,7 +75,7 @@ for i in range(len(Data_Sys)):
 
 #impresión            
 for i in range(len(Final_Stars)):
-    print(Final_Stars[i])
+    print(f'{Final_Stars[i][1]} -- ["{Final_Stars[i][0]}","{Final_Stars[i][18]}","{Final_Stars[i][17]}","{Final_Stars[i][13]}","{Final_Stars[i][23]}"]')
     
 #----------------- Código para generar el color de cada una de las estrellas
 
