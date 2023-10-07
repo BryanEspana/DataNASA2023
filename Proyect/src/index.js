@@ -15,9 +15,10 @@ import { fetchAndFilterStars } from '../src/utils/starData.js';
 
 let planetModelGlobal;
 let starsData;
-let colors = ["rgb(255, 255, 255)","rgb(255, 0, 0)","rgb(255, 0, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)"]
+var colors = []
 let currentIndex = 0
 let initalColor;
+var filteredStars;
 
 if (localStorage.getItem('starIndex') !== null) {
     currentIndex = parseInt(localStorage.getItem('starIndex'))
@@ -40,25 +41,29 @@ function displayStarInfo(star) {
     document.getElementById('temperature').textContent =    star[5];
     document.getElementById('radius').textContent =         star[6];
     document.getElementById('mass').textContent =           star[7];
-    document.getElementById('gravity').textContent =        star[8];
+    //document.getElementById('gravity').textContent =        star[8];
     document.getElementById('age').textContent =            star[9];
 }
 
 async function renderStars() {
-    const filteredStars = await fetchAndFilterStars();
+    filteredStars = await fetchAndFilterStars();
     
-    const star = filteredStars[currentIndex];  // Asumiendo que quieres mostrar la información de la primera estrella en la lista
-    starsData = star
+    const star = filteredStars[currentIndex]; 
+
     displayStarInfo(star);
+    colors = []
+    for (let i = 0; i < filteredStars.length; i++){
+        let starColor = convert_K_to_RGB(filteredStars[i][5])
+
+        let color = "rgb(" + parseInt(starColor[0]) + "," + parseInt(starColor[1]) + "," + parseInt(starColor[2]) + ")"
+        colors.push(color)
+    }
+    return star;
 }
 renderStars()
 
 
 function convert_K_to_RGB(colour_temperature) {
-    // Algorithm courtesy of 
-    // http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
-
-    // Range check
     if (colour_temperature < 1000) {
         colour_temperature = 1000;
     } else if (colour_temperature > 40000) {
@@ -73,16 +78,34 @@ function convert_K_to_RGB(colour_temperature) {
         red = 255;
     } else {
         var tmp_red = 329.698727446 * Math.pow(tmp_internal - 60, -0.1332047592);
-        red = (tmp_red < 0) ? 0 : (tmp_red > 255) ? 255 : tmp_red;
+        if (tmp_red < 0) {
+            red = 0;
+        } else if (tmp_red > 255) {
+            red = 255;
+        } else {
+            red = tmp_red;
+        }
     }
 
     // Green
     if (tmp_internal <= 66) {
         var tmp_green = 99.4708025861 * Math.log(tmp_internal) - 161.1195681661;
-        green = (tmp_green < 0) ? 0 : (tmp_green > 255) ? 255 : tmp_green;
+        if (tmp_green < 0) {
+            green = 0;
+        } else if (tmp_green > 255) {
+            green = 255;
+        } else {
+            green = tmp_green;
+        }
     } else {
         var tmp_green = 288.1221695283 * Math.pow(tmp_internal - 60, -0.0755148492);
-        green = (tmp_green < 0) ? 0 : (tmp_green > 255) ? 255 : tmp_green;
+        if (tmp_green < 0) {
+            green = 0;
+        } else if (tmp_green > 255) {
+            green = 255;
+        } else {
+            green = tmp_green;
+        }
     }
 
     // Blue
@@ -92,7 +115,16 @@ function convert_K_to_RGB(colour_temperature) {
         blue = 0;
     } else {
         var tmp_blue = 138.5177312231 * Math.log(tmp_internal - 10) - 305.0447927307;
-        blue = (tmp_blue < 0) ? 0 : (tmp_blue > 255) ? 255 : tmp_blue;
+        
+        if (tmp_blue < 0) {
+            blue = 0;
+        }
+        else if (tmp_blue > 255) {
+            blue = 255;
+        }
+        else {
+            blue = tmp_blue;
+        }
     }
 
     // Return RGB values as an array
@@ -357,6 +389,7 @@ document.getElementById("returnBackToSelector").addEventListener("click", functi
 
 
 loopMachine.addCallback(() => {
+    light.color = new THREE.Color(colors[currentIndex]);
     // ... other animation code ...
     starFieldNear.position.x += 0.05; // Mueve las estrellas cercanas más rápido
     starFieldFar.position.x += 0.02;  // Mueve las estrellas lejanas más lento
@@ -379,9 +412,12 @@ loopMachine.addCallback(() => {
         if (planetModelGlobal.position.x < -900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
 
-            renderStars();
             planetModelGlobal.position.x = 900
-            let starColor = convert_K_to_RGB(starsData[5])
+            
+            let starData = renderStars();
+
+
+            let starColor = convert_K_to_RGB(filteredStars[currentIndex][5])
             console.log(starColor)
 
             let color = "rgb(" + parseInt(starColor[0]) + "," + parseInt(starColor[1]) + "," + parseInt(starColor[2]) + ")"
@@ -402,11 +438,13 @@ loopMachine.addCallback(() => {
         if (planetModelGlobal.position.x > 900) {  // Adjust threshold as needed
             // Dispose of resources for current planetModelGlobal
             
-            renderStars();
             planetModelGlobal.position.x = -900
-            // Change color
 
-            let starColor = convert_K_to_RGB(starsData[5])
+            
+            let starData = renderStars();
+            // Change color
+            console.log(starData[5])
+            let starColor = convert_K_to_RGB(filteredStars[currentIndex][5])
             console.log(starColor)
 
             let color = "rgb(" + parseInt(starColor[0]) + "," + parseInt(starColor[1]) + "," + parseInt(starColor[2]) + ")"
