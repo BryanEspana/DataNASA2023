@@ -1,6 +1,11 @@
 import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 
+exoPlanetData = [
+
+]
+
+
 // Get a reference to the container element that will hold our scene
 const container = document.querySelector('#scene-container');
 

@@ -12,12 +12,13 @@ import { EffectComposer } from "../node_modules/three/examples/jsm/postprocessin
 import { RenderPass } from "../node_modules/three/examples/jsm/postprocessing/RenderPass.js";
 import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { fetchAndFilterStars } from '../src/utils/starData.js';
+import { fetchStarData } from "../src/utils/exoPlanetData.js";
 
 let planetModelGlobal;
 let starsData;
 var colors = []
 let currentIndex = 0
-let initalColor;
+
 var filteredStars;
 
 if (localStorage.getItem('starIndex') !== null) {
@@ -47,7 +48,7 @@ function displayStarInfo(star) {
 
 async function renderStars() {
     filteredStars = await fetchAndFilterStars();
-    
+    console.log(filteredStars)
     const star = filteredStars[currentIndex]; 
 
     displayStarInfo(star);
@@ -62,6 +63,9 @@ async function renderStars() {
 }
 renderStars()
 
+console.log("Antes")
+console.log(fetchStarData())
+console.log("Despues")
 
 function convert_K_to_RGB(colour_temperature) {
     if (colour_temperature < 1000) {
