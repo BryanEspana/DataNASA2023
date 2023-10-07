@@ -13,7 +13,6 @@ import { RenderPass } from "../node_modules/three/examples/jsm/postprocessing/Re
 import { GLTFLoader } from '../node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { fetchAndFilterStars } from '../src/utils/starData.js';
 
-
 let planetModelGlobal;
 let starsData;
 let colors = ["rgb(255, 255, 255)","rgb(255, 0, 0)","rgb(255, 0, 255)","rgb(0, 0, 255)","rgb(0, 255, 0)"]

@@ -67,5 +67,7 @@ export async function fetchAndFilterStars() {
           displayStarInfo(selectedStar);
       }
   });
+  return FinalStars;  // por ejemplo, si quieres que la función retorne la lista FinalStars
+
 });
 

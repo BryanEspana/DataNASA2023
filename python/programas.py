@@ -33,28 +33,32 @@ SIgnificado de las columnas
 import math
 import pandas as pd
 import numpy as np
-
+import requests
+from io import StringIO
 
 #Estrellas a utilizar
 Stars = ['alf Tau','HD 27442', '14 Her','61 Vir','tau Boo']
 #Lista para guardar info de las estrellas que queremos
 Final_Stars = []
 
-#se pasa toda la base de datos a una lista
-Data_Sys = []
-        
-with open("info exoplanets.txt", "r") as data:
-    for line in data:
-        Data_Sys.append([(x) for x in line.strip().split(",")])
-        
+url = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name,hostname,hd_name,hip_name,sy_snum,disc_year,pl_refname,pl_orbper,pl_orbsmax,pl_rade,pl_masse,pl_orbeccen,pl_insol,pl_eqt,pl_rvamp,st_spectype,st_teff,st_rad,st_mass,st_met,st_metratio,st_lum,st_age,sy_dist+from+ps&format=csv'
+response = requests.get(url)
+if response.status_code != 200:
+    raise ValueError(f"Error: Unable to fetch data from API. Status code: {response.status_code}")
+
+data_io = StringIO(response.text)
+df = pd.read_csv(data_io)
+Data_Sys = df.values.tolist()
+
+
 
 #quitando ' " ' de los conjuntos de datos
 for i in range(len(Data_Sys)):
     for x in range(len(Data_Sys[i])):
         temp = Data_Sys[i][x]
-        temp = temp.strip('"')
-        Data_Sys[i][x] = temp
-        
+        if isinstance(temp, str):  # Asegura que el dato es un string antes de usar 'strip()'
+            temp = temp.strip('"')
+            Data_Sys[i][x] = temp
 
 #extrayendo toda la información de las estrellas a utilizar
 for i in range(len(Data_Sys)):
@@ -69,107 +73,10 @@ for i in range(len(Data_Sys)):
         if temp_stars == name_data:
             Final_Stars.append(temp_data)
 
-'''#impresión            
+#impresión            
 for i in range(len(Final_Stars)):
-    print(Final_Stars[i])'''
+    print(Final_Stars[i])
     
 #----------------- Código para generar el color de cada una de las estrellas
 
-cte_Wein = 0.0028976#constante de la Ley de wein
-
-t_eff = []
-name = []
-
-for i in range(len(Final_Stars)):
-    
-    x = Final_Stars[i]
-    name_ = x[0]
-    
-
-    # Verifica si temporal[16] es una cadena vacía antes de intentar convertirla
-    try:
-        temperature = float(x[16])
-    except:
-        pass
-    
-
-    name.append(name_)
-    t_eff.append(temperature)
-    
-
-
-def convert_K_to_RGB(colour_temperature):
-    """
-    Converts from K to RGB, algorithm courtesy of 
-    http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
-    """
-    #range check
-    if colour_temperature < 1000: 
-        colour_temperature = 1000
-    elif colour_temperature > 40000:
-        colour_temperature = 40000
-    
-    tmp_internal = colour_temperature / 100.0
-    
-    # red 
-    if tmp_internal <= 66:
-        red = 255
-    else:
-        tmp_red = 329.698727446 * math.pow(tmp_internal - 60, -0.1332047592)
-        if tmp_red < 0:
-            red = 0
-        elif tmp_red > 255:
-            red = 255
-        else:
-            red = tmp_red
-    
-    # green
-    if tmp_internal <=66:
-        tmp_green = 99.4708025861 * math.log(tmp_internal) - 161.1195681661
-        if tmp_green < 0:
-            green = 0
-        elif tmp_green > 255:
-            green = 255
-        else:
-            green = tmp_green
-    else:
-        tmp_green = 288.1221695283 * math.pow(tmp_internal - 60, -0.0755148492)
-        if tmp_green < 0:
-            green = 0
-        elif tmp_green > 255:
-            green = 255
-        else:
-            green = tmp_green
-    
-    # blue
-    if tmp_internal >=66:
-        blue = 255
-    elif tmp_internal <= 19:
-        blue = 0
-    else:
-        tmp_blue = 138.5177312231 * math.log(tmp_internal - 10) - 305.0447927307
-        if tmp_blue < 0:
-            blue = 0
-        elif tmp_blue > 255:
-            blue = 255
-        else:
-            blue = tmp_blue
-    
-    return red, green, blue
-
-rgb = []#código de las estrellas en orden a como aparecen en la lista de las estrellas deseadas
-
-for i in t_eff:
-    color_rgb = convert_K_to_RGB(i)
-    rgb.append(color_rgb)
-
-#print(rgb)
-#df = pd.DataFrame(zip(name,t_eff,rgb)) #Código solo para imprimir una tabla 
-#print(df)
-
-
-                      
-                      
-    
-        
         
