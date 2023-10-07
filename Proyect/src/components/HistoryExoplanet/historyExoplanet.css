@@ -1,0 +1,37 @@
+body{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: auto;
+    color: white !important;
+}
+h5{
+    color: white !important;
+}
+
+
+h1{
+    margin: 2rem 0rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 80px;
+    background-image: url("../../assets/img/encabezado.png");
+    background-size: cover;
+
+}
+
+.displayrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+ 
+p {
+    text-align: justify;
+}

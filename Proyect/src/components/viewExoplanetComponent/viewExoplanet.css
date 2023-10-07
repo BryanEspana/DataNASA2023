@@ -51,3 +51,9 @@ body{
     display: flex;
     flex-direction: column;
   }
+
+  .absolutBottom{
+    position: absolute;
+    bottom: 10%;
+    left: -5%;
+  }

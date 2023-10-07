@@ -11,11 +11,11 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color('black');
 
 let aspectRatio = container.clientWidth / container.clientHeight;
-const camera = new THREE.PerspectiveCamera(4, aspectRatio);
+const camera = new THREE.PerspectiveCamera(2.5, aspectRatio);
 
 // every object is initially created at ( 0, 0, 0 )
 // move the camera back so we can view the scene
-camera.position.set(500, 0, 200);
+camera.position.set(800, 0, 200);
 
 
 
