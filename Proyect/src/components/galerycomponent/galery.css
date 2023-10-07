@@ -30,7 +30,8 @@ h5{
   }
   .imagenes img{
     width: 100%;
-    height: auto;
+    object-fit: contain;
+    height: 100%;
   }
   .imagenes a:hover{
     border: 1rem solid #8d8d8d; /* Borde blanco alrededor de las imágenes */
@@ -51,6 +52,7 @@ h5{
     justify-content: space-around;  }
 
     .title1{
+      z-index: 10;
       color: white;
       text-transform: uppercase;
       font-size: 30px;
@@ -62,6 +64,8 @@ h5{
     }
 
     .title2{
+      z-index: 10;
+
       color: white;
       text-transform: uppercase;
       font-size: 30px;
