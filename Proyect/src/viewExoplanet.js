@@ -3,36 +3,80 @@ import * as THREE from 'three';
 
 let planetIndex;
 let starIndex;
+let planetToLoad;
 
 if (localStorage.getItem('planetIndexLS') !== null) {
-    currentIndex = parseInt(localStorage.getItem('planetIndexLS'))
-    console.log("Loaded planetIndexLS from localStorage ", currentIndex)
+    planetIndex = parseInt(localStorage.getItem('planetIndexLS'))
+    console.log("Loaded planetIndexLS from localStorage ", planetIndex)
 } else {
-    currentIndex = 0
+    planetIndex = 0
     console.log("Initialized planetIndexLS to 0")
 }
 
 if (localStorage.getItem('starIndex') !== null) {
-    currentIndex = parseInt(localStorage.getItem('starIndex'))
-    console.log("Loaded starIndex from localStorage ", currentIndex)
+    starIndex = parseInt(localStorage.getItem('starIndex'))
+    console.log("Loaded starIndex from localStorage ", starIndex)
 } else {
-    currentIndex = 0
+    starIndex = 0
     console.log("Initialized starIndex to 0")
 }
 
-function setPlanetIndex(index) {
-
-    localStorage.setItem('planetIndexLS',index.toString())
+if (localStorage.getItem('planetToLoad') !== null) {
+    planetToLoad = parseInt(localStorage.getItem('planetToLoad'))
+    console.log("Loaded planetToLoad from localStorage ", planetToLoad)
+} else {
+    planetToLoad = 0
+    console.log("Initialized planetToLoad to 0")
 }
 
-exoPlanetData = [
+
+
+const exoPlanetData = [
     [["tau Boo b","1.4","1.44","nan","15.6521"]],
     [["14 Her b","0.9","0.93","nan","17.9323"]],
     [["61 Vir b","0.94","0.96","nan","8.50332"],["61 Vir c","0.91","1.03","nan","8.50332"],["61 Vir d","0.94","0.96","nan","8.50332"]],
-    [["alf Tau b","1.13","45.1","nan","20.4332"]]
+    [["alf Tau b","1.13","45.1","nan","20.4332"]],
     [["HD 27442 b","1.23","nan","nan","18.2704"]],
+    [["SA-2977","1.04 UA","4.72 Tierras","1.68","10C"]]
 ]
 
+function displayPlanetInfo() {
+
+    if (localStorage.getItem('planetIndexLS') !== null) {
+        planetIndex = parseInt(localStorage.getItem('planetIndexLS'))
+        console.log("Loaded planetIndexLS from localStorage ", planetIndex)
+    } else {
+        planetIndex = 0
+        console.log("Initialized planetIndexLS to 0")
+    }
+    
+    if (localStorage.getItem('starIndex') !== null) {
+        starIndex = parseInt(localStorage.getItem('starIndex'))
+        console.log("Loaded starIndex from localStorage ", starIndex)
+    } else {
+        starIndex = 0
+        console.log("Initialized starIndex to 0")
+    }
+
+    if (localStorage.getItem('planetToLoad') !== null) {
+        planetToLoad = parseInt(localStorage.getItem('planetToLoad'))
+        console.log("Loaded planetToLoad from localStorage ", planetToLoad)
+    } else {
+        planetToLoad = 0
+        console.log("Initialized planetToLoad to 0")
+    }
+    console.log("planetIndex: ", planetIndex)
+    console.log("starIndex: ", starIndex)
+    console.log("planetToLoad: ", planetToLoad)
+    console.log("exoPlanetData: ", exoPlanetData)
+
+    
+    document.getElementById('exoPlanetName').textContent = exoPlanetData[starIndex][planetIndex][0];
+    document.getElementById('distance').textContent = exoPlanetData[starIndex][planetIndex][1];
+    document.getElementById('mass').textContent = exoPlanetData[starIndex][planetIndex][2];
+    document.getElementById('radius').textContent = exoPlanetData[starIndex][planetIndex][3];
+    document.getElementById('temperature').textContent = exoPlanetData[starIndex][planetIndex][4];
+}
 
 // Get a reference to the container element that will hold our scene
 const container = document.querySelector('#scene-container');
@@ -57,7 +101,13 @@ let planetModelGlobal;
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('/src/assets/glt_glb/modelo3DPlaneta.glb', (gltf) => {
+            let model;
+            if (planetToLoad == 0) {
+                model = '/src/assets/glt_glb/Venus.glb'
+            } else if (planetToLoad == 1) {
+                model = '/src/assets/glt_glb/modelo3DPlaneta.glb'
+            }
+            loader.load(model, (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);
@@ -66,8 +116,12 @@ async function loadPlanetModel(position) {
 
     try {
         const planetModel = await loadPlanetOptimized();
-
-        planetModel.scale.set(0.08, 0.08, 0.08);
+        if (planetToLoad == 0) {
+            planetModel.scale.set(0.03, 0.03, 0.03);
+        }
+        else if (planetToLoad == 1) {
+            planetModel.scale.set(0.08, 0.08, 0.08);
+        }
 
         const textureLoader = new THREE.TextureLoader();
         const emissiveMap = textureLoader.load('/src/assets/img/ruido1.jpg');
@@ -210,8 +264,10 @@ renderer.domElement.addEventListener('mouseup', () => {
 
 
 function animate() {
+
     requestAnimationFrame(animate);
     planetModelGlobal.rotation.y += 0.002;
+    displayPlanetInfo();
     renderer.render(scene, camera);
 }
 animate();

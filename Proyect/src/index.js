@@ -42,7 +42,6 @@ function displayStarInfo(star) {
     document.getElementById('temperature').textContent =    star[5];
     document.getElementById('radius').textContent =         star[6];
     document.getElementById('mass').textContent =           star[7];
-    //document.getElementById('gravity').textContent =        star[8];
     document.getElementById('age').textContent =            star[9];
 }
 
@@ -344,6 +343,8 @@ document.getElementById("movePlanetLeftBtn").addEventListener("click", function(
     }else{
         currentIndex = (currentIndex + 1);
     }
+
+    setStarIndex(currentIndex)
 });
 
 document.getElementById("movePlanetRightBtn").addEventListener("click", function() {
@@ -355,6 +356,8 @@ document.getElementById("movePlanetRightBtn").addEventListener("click", function
     }else{
         currentIndex = (currentIndex - 1);
     }
+
+    setStarIndex(currentIndex)
 });
 
 document.getElementById("seeStarButton").addEventListener("click", function() {
