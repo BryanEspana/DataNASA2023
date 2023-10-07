@@ -11,11 +11,11 @@ const scene = new THREE.Scene();
 scene.background = new THREE.Color('black');
 
 let aspectRatio = container.clientWidth / container.clientHeight;
-const camera = new THREE.PerspectiveCamera(30, aspectRatio);
+const camera = new THREE.PerspectiveCamera(4, aspectRatio);
 
 // every object is initially created at ( 0, 0, 0 )
 // move the camera back so we can view the scene
-camera.position.set(0, 0, 200);
+camera.position.set(500, 0, 200);
 
 
 
@@ -24,7 +24,7 @@ let planetModelGlobal;
 async function loadPlanetModel(position) {
     const loadPlanetOptimized = () => {
         return new Promise((resolve, reject) => {
-            loader.load('/src/assets/glt_glb/Venus.glb', (gltf) => {
+            loader.load('/src/assets/glt_glb/modelo3DPlaneta.glb', (gltf) => {
                 const planet = gltf.scene;
                 resolve(planet);
             }, undefined, reject);
