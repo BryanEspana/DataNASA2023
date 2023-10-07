@@ -40,6 +40,30 @@ const exoPlanetData = [
     [["SA-2977","1.04 UA","4.72 Tierras","1.68","10C"]]
 ]
 
+function displayInfoInSelector(){
+    if (exoPlanetData[starIndex][0][0]) {
+        document.getElementById('exoplanet1name').textContent = exoPlanetData[starIndex][0][0];
+    } else {
+        document.getElementById('exoplanet1').style.visibility = "hidden";
+    }
+
+    if (exoPlanetData[starIndex][1][0]) {
+        document.getElementById('exoplanet2name').textContent = exoPlanetData[starIndex][1][0];
+    }
+    else {
+        document.getElementById('exoplanet2').style.visibility = "hidden";
+    }
+
+    if (exoPlanetData[starIndex][2][0]) {
+        document.getElementById('exoplanet3name').textContent = exoPlanetData[starIndex][2][0];
+    }
+    else {
+        document.getElementById('exoplanet3').style.visibility = "hidden";
+    }
+}
+
+displayInfoInSelector();
+
 function displayPlanetInfo() {
 
     if (localStorage.getItem('planetIndexLS') !== null) {
@@ -65,18 +89,14 @@ function displayPlanetInfo() {
         planetToLoad = 0
         console.log("Initialized planetToLoad to 0")
     }
-    console.log("planetIndex: ", planetIndex)
-    console.log("starIndex: ", starIndex)
-    console.log("planetToLoad: ", planetToLoad)
-    console.log("exoPlanetData: ", exoPlanetData)
-
-    
     document.getElementById('exoPlanetName').textContent = exoPlanetData[starIndex][planetIndex][0];
     document.getElementById('distance').textContent = exoPlanetData[starIndex][planetIndex][1];
     document.getElementById('mass').textContent = exoPlanetData[starIndex][planetIndex][2];
     document.getElementById('radius').textContent = exoPlanetData[starIndex][planetIndex][3];
     document.getElementById('temperature').textContent = exoPlanetData[starIndex][planetIndex][4];
 }
+
+
 
 // Get a reference to the container element that will hold our scene
 const container = document.querySelector('#scene-container');
